@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/maps/GameMap.tscn" type="PackedScene" id=6]
 
 [node name="MainScene" type="Node2D"]
+position = Vector2( 0, -1 )
 script = ExtResource( 5 )
 
 [node name="GameMap" parent="." instance=ExtResource( 6 )]

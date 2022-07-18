@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://scenes/entity/enemy/base/EnemyBase.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -17,9 +22,10 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "GunTurretTower",
 "language": "GDScript",
-"path": "res://scenes/entity/tower/GunTurretTower.gd"
+"path": "res://scenes/entity/tower/base/GunTurretTower.gd"
 } ]
 _global_script_class_icons={
+"Enemy": "",
 "GitAPI": "",
 "GunTurretTower": ""
 }

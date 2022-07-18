@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/textures/towers/towerDefense_tile249.png" type="Texture" id=1]
 [ext_resource path="res://resources/textures/towers/towerDefense_tile180.png" type="Texture" id=2]
 [ext_resource path="res://scenes/entity/tower/TowerGunCommon.gd" type="Script" id=3]
+[ext_resource path="res://scenes/entity/tower/ReloadIndicator.gd" type="Script" id=4]
 
 [node name="TowerGunCommon" type="Node2D"]
 script = ExtResource( 3 )
@@ -20,8 +21,12 @@ offset = Vector2( 16, 0 )
 [node name="GunMuzzle" type="Position2D" parent="TowerGun"]
 position = Vector2( 48, 0 )
 
-[node name="Line2D" type="Line2D" parent="TowerGun"]
-position = Vector2( 48, 0 )
-points = PoolVector2Array( 0, 0, 500, 0 )
-width = 2.0
-default_color = Color( 0.0705882, 0.0509804, 0.631373, 1 )
+[node name="ReloadIndicator" type="Label" parent="."]
+margin_left = 11.0
+margin_top = -14.0
+margin_right = 51.0
+text = "Ready"
+script = ExtResource( 4 )
+
+[connection signal="on_reloading_finished" from="." to="ReloadIndicator" method="_on_TowerGunCommon_on_reloading_finished"]
+[connection signal="on_reloading_time_changed" from="." to="ReloadIndicator" method="_on_TowerGunCommon_on_reloading_time_changed"]

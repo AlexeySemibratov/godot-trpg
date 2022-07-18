@@ -1,6 +1,6 @@
 extends TextureRect
 
-var tower_node_path = "res://scenes/entity/TowerEntity.tscn"
+export(String) var tower_node_path = "res://scenes/entity/tower/TowerEntity.tscn"
 
 func set_tower_node_path(path):
 	self.tower_node_path = path

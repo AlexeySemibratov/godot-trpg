@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/maps/empty_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/ground_tileset_v2.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/entity/tower/TowerEntity.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/entity/enemy/Enemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/entity/tower/TowerRocketCommon.tscn" type="PackedScene" id=5]
 
 [node name="GameMap" type="Node2D"]
 
@@ -31,6 +30,3 @@ position = Vector2( 289, 369 )
 
 [node name="Enemy" parent="ConstructionsContainer" instance=ExtResource( 4 )]
 position = Vector2( 846, 347 )
-
-[node name="Node2D" parent="ConstructionsContainer" instance=ExtResource( 5 )]
-position = Vector2( 353, 238 )
