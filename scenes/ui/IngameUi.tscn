@@ -1,49 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://resources/textures/towers/towerDefense_tile249.png" type="Texture" id=1]
-[ext_resource path="res://resources/textures/ui/circle1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/ui/ButtonTexture.gd" type="Script" id=3]
-
-[sub_resource type="Theme" id=1]
+[ext_resource path="res://scenes/ui/shop/ShopItems.tscn" type="PackedScene" id=1]
 
 [node name="IngameUi" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
-
-[node name="BuildTowerButton" type="TextureRect" parent="VBoxContainer" groups=["BuildButtonsGroup"]]
-margin_right = 60.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource( 2 )
-expand = true
-script = ExtResource( 3 )
-
-[node name="BuildButton" type="TextureButton" parent="VBoxContainer/BuildTowerButton"]
-margin_left = 11.0
-margin_top = 10.0
-margin_right = 51.0
+margin_left = 101.0
+margin_top = 50.0
+margin_right = 101.0
 margin_bottom = 50.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 0
-action_mode = 0
-button_mask = 0
-texture_normal = ExtResource( 1 )
-expand = true
 
-[node name="ButtonText" type="Label" parent="VBoxContainer/BuildTowerButton"]
-margin_left = 10.0
-margin_top = 67.0
-margin_right = 50.0
-margin_bottom = 81.0
-theme = SubResource( 1 )
-text = "Cost 5"
+[node name="ShopList" parent="." instance=ExtResource( 1 )]
+margin_left = -103.0
+margin_top = -49.0
+margin_right = -103.0
+margin_bottom = -49.0

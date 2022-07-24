@@ -9,8 +9,8 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
-"class": "Enemy",
+"base": "PathFollow2D",
+"class": "EnemyBase",
 "language": "GDScript",
 "path": "res://scenes/entity/enemy/base/EnemyBase.gd"
 }, {
@@ -23,11 +23,23 @@ _global_script_classes=[ {
 "class": "GunTurretTower",
 "language": "GDScript",
 "path": "res://scenes/entity/tower/base/GunTurretTower.gd"
+}, {
+"base": "Area2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://scenes/entity/projectile/Projectile.gd"
+}, {
+"base": "Node2D",
+"class": "TowerBuilder",
+"language": "GDScript",
+"path": "res://systems/TowerBuilder.gd"
 } ]
 _global_script_class_icons={
-"Enemy": "",
+"EnemyBase": "",
 "GitAPI": "",
-"GunTurretTower": ""
+"GunTurretTower": "",
+"Projectile": "",
+"TowerBuilder": ""
 }
 
 [application]
@@ -35,6 +47,11 @@ _global_script_class_icons={
 config/name="Tower-defense-rpg"
 run/main_scene="res://scenes/MainScene.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+TowerEntityManager="*res://scenes/singletons/Towers.gd"
+Collision="*res://scenes/singletons/Collision.gd"
 
 [gdnative]
 
@@ -63,6 +80,11 @@ fire={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Towers"
+2d_physics/layer_2="Enemies"
 
 [physics]
 

@@ -7,6 +7,9 @@
 [node name="RocketTower" type="Node2D"]
 script = ExtResource( 2 )
 rotation_speed_deg = 40
+active_range = 400
+range_area_node = NodePath("Area2D")
+turret_node = NodePath("TowerGun")
 
 [node name="TowerBase" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
@@ -18,3 +21,7 @@ texture = ExtResource( 3 )
 
 [node name="Muzzle" type="Position2D" parent="TowerGun"]
 position = Vector2( 32, 0 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 32, 32 )
+collision_mask = 3

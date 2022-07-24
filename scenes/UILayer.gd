@@ -7,6 +7,7 @@ var preview_control
 
 func set_tower_preview(tower_name, position):
 	var tower_prev = load(tower_name).instance()
+	tower_prev.deactivate()
 	tower_prev.set_name("TowerPreview")
 	tower_prev.modulate = Valid_Build_Color
 	

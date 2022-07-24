@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/textures/towers/towerDefense_tile249.png" type="Texture" id=1]
+[ext_resource path="res://resources/textures/ui/circle1.png" type="Texture" id=2]
+
+[sub_resource type="Theme" id=1]
+
+[node name="ShopButton" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1024.0
+margin_bottom = -600.0
+
+[node name="BuildTowerButton" type="TextureRect" parent="." groups=["BuildButtonsGroup"]]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="BuildButton" type="TextureButton" parent="BuildTowerButton"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 51.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 0
+action_mode = 0
+button_mask = 0
+texture_normal = ExtResource( 1 )
+expand = true
+
+[node name="ButtonText" type="Label" parent="BuildTowerButton"]
+margin_left = 10.0
+margin_top = 67.0
+margin_right = 50.0
+margin_bottom = 81.0
+theme = SubResource( 1 )
+text = "Cost 5"

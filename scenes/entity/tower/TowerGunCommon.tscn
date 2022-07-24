@@ -8,6 +8,9 @@
 [node name="TowerGunCommon" type="Node2D"]
 script = ExtResource( 3 )
 rotation_speed_deg = 60
+active_range = 600
+range_area_node = NodePath("Area2D")
+turret_node = NodePath("TowerGun")
 
 [node name="TowerBase" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
@@ -27,6 +30,10 @@ margin_top = -14.0
 margin_right = 51.0
 text = "Ready"
 script = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 32, 32 )
+collision_mask = 3
 
 [connection signal="on_reloading_finished" from="." to="ReloadIndicator" method="_on_TowerGunCommon_on_reloading_finished"]
 [connection signal="on_reloading_time_changed" from="." to="ReloadIndicator" method="_on_TowerGunCommon_on_reloading_time_changed"]

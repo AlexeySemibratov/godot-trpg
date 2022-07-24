@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/maps/empty_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/ground_tileset_v2.tres" type="TileSet" id=2]
-[ext_resource path="res://scenes/entity/tower/TowerEntity.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/entity/enemy/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/entity/tower/TowerGunCommon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/maps/GameMap.gd" type="Script" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -22, 590, 0, 0, 0, 0, 148, 588, 0, 0, 0, 0, 146, 556, 0, 0, 0, 0, 372, 555, 0, 0, 0, 0, 369, 461, 0, 0, 0, 0, 402, 459, 0, 0, 0, 0, 403, 368, 0, 0, 0, 0, 945, 369, 0, 0, 0, 0, 947, 428, 0, 0, 0, 0, 1052, 429, 0, 0, 0, 0, 1092, 430 )
+}
 
 [node name="GameMap" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="GroundLevel" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -26,7 +32,8 @@ format = 1
 [node name="ConstructionsContainer" type="Node2D" parent="."]
 
 [node name="TowerEntity" parent="ConstructionsContainer" instance=ExtResource( 3 )]
-position = Vector2( 289, 369 )
+position = Vector2( 608, 131 )
 
-[node name="Enemy" parent="ConstructionsContainer" instance=ExtResource( 4 )]
-position = Vector2( 846, 347 )
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( -3, 3 )
+curve = SubResource( 1 )
