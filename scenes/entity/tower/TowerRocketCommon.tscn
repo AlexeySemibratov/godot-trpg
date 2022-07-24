@@ -11,7 +11,7 @@ reload_time = 3
 active_range = 400
 range_area_node = NodePath("Area2D")
 turret_node = NodePath("TowerGun")
-damage = 100
+damage = 60
 
 [node name="TowerBase" type="Sprite" parent="."]
 position = Vector2( 32, 32 )

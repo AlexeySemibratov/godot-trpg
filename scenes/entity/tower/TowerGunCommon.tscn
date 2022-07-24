@@ -11,6 +11,7 @@ rotation_speed_deg = 180
 active_range = 200
 range_area_node = NodePath("Area2D")
 turret_node = NodePath("TowerGun")
+damage = 25
 
 [node name="TowerBase" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
