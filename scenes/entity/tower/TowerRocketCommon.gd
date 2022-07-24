@@ -11,7 +11,7 @@ func fire(enemy: EnemyBase):
 	
 	var bullet = bullet_scene.instance()
 	bullet.setup((enemy.position - start_pos).normalized(), enemy)
-	bullet.connect("on_bullet_hit_enemy", self, "_on_bullet_hit_enemy")
+	bullet.connect("on_hit_enemy", self, "_on_bullet_hit_enemy")
 	bullet.global_position = start_pos
 	
 	get_tree().root.add_child(bullet)

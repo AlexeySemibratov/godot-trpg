@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/maps/empty_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/ground_tileset_v2.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/entity/tower/TowerGunCommon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/maps/GameMap.gd" type="Script" id=4]
+[ext_resource path="res://scenes/entity/tower/TowerRocketCommon.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -32,7 +33,12 @@ format = 1
 [node name="ConstructionsContainer" type="Node2D" parent="."]
 
 [node name="TowerEntity" parent="ConstructionsContainer" instance=ExtResource( 3 )]
-position = Vector2( 608, 131 )
+position = Vector2( 499, 548 )
+rotation = 3.14159
+
+[node name="RocketTower" parent="ConstructionsContainer" instance=ExtResource( 5 )]
+position = Vector2( 726, 157 )
+rotation = 1.5708
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( -3, 3 )

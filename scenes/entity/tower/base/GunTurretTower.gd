@@ -32,6 +32,7 @@ var current_target_ref: WeakRef = weakref(null)
 func _ready():
 	_setup_collision()
 	_setup_detector_ray()
+	_setup_range_area()
 	
 func _setup_collision():
 	var shape = CircleShape2D.new()
@@ -46,6 +47,14 @@ func _setup_detector_ray():
 	detector_ray.set_collision_mask_bit(Collision.MASK_BIT_ENEMIES, true)
 	tower_turret.add_child(detector_ray)
 	detector_ray.enabled = true
+	
+func _setup_range_area():
+	range_area.connect("body_exited", self, "_on_body_leave_area")
+	
+func _on_body_leave_area(body):
+	var enemy = body.owner
+	if (enemy is EnemyBase && enemy == current_target_ref.get_ref()):
+		_clear_target()
 	
 func _physics_process(delta):
 	if (!is_active): return
@@ -77,11 +86,12 @@ func deactivate():
 	
 func find_enemy() -> EnemyBase:
 	var enemies_in_range = range_area.get_overlapping_bodies()
-	var enemy = enemies_in_range.front()
-	if (enemy && enemy.owner is EnemyBase):
-		return enemy.owner
-	else:
-		return null
+	for enemy in enemies_in_range:
+		if (enemy && enemy.owner is EnemyBase):
+			var target: EnemyBase = enemy.owner
+			return target
+	
+	return null
 		
 func _shoot(enemy: EnemyBase):
 	if (ready_to_fire):
@@ -120,4 +130,7 @@ func _process_ai(delta):
 	var enemy: EnemyBase = find_enemy()
 	if (enemy):
 		current_target_ref = weakref(enemy)
+		
+func _clear_target():
+	current_target_ref = weakref(null)
 	

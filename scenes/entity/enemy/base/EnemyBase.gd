@@ -15,16 +15,23 @@ onready var body: KinematicBody2D = get_node(body_node)
 onready var current_hp = max_hp
 
 func _process(delta):
-	process_movement(delta)
-	process_living(delta)
+	_process_movement(delta)
+	_process_living(delta)
 	
-func process_movement(delta):
+func _process_movement(delta):
 	offset += speed * delta
 
-func process_living(delata):
+func _process_living(delata):
 	if (current_hp <= 0):
 		emit_signal("on_dead")
+		on_destroyed()
 		queue_free()
+		
+func on_destroyed():
+	pass
+	
+func get_map():
+	return get_tree().get_nodes_in_group(Groups.GAME_MAP).front()
 
 func take_damage(amount):
 	emit_signal("on_damage_taken", amount, max_hp)
