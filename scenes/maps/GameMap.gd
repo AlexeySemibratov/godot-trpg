@@ -14,7 +14,7 @@ func _init():
 func _ready():
 	base.connect("body_entered", self, "on_body_enter_base")
 	for i in range(10):
-		var enemy = load("res://scenes/entity/enemy/Tank.tscn").instance()
+		var enemy = load("res://scenes/entity/enemy/specials/light/Tank.tscn").instance()
 		path.add_child(enemy)
 		var delay = rand_range(0.5, 1)
 		yield(get_tree().create_timer(delay), "timeout")

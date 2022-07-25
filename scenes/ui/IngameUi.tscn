@@ -10,8 +10,4 @@ anchor_bottom = 1.0
 [node name="ShopList" parent="." instance=ExtResource( 1 )]
 
 [node name="Base" parent="." instance=ExtResource( 2 )]
-anchor_left = 1.0
-anchor_bottom = 0.0
-margin_left = -1024.0
-margin_bottom = 600.0
 max_value = 10
