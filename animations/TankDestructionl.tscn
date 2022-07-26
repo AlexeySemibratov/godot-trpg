@@ -78,7 +78,7 @@ script = ExtResource( 1 )
 modulate = Color( 0.278431, 0.270588, 0.270588, 1 )
 
 [node name="Tracks" parent="Body" index="0"]
-frame = 1
+frame = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/explosion 1" = SubResource( 1 )
