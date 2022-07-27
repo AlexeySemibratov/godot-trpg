@@ -5,7 +5,8 @@ export var base_hp = 10
 onready var path: Path2D = $Path2D
 onready var ground = $GroundLevel
 onready var road = $RoadLevel
-onready var decorations = $DecorationLevel
+onready var constructions = $ConstructionsLayer
+onready var building_grid = $BuildingGrid
 onready var base = $BaseArea
 
 func _init():

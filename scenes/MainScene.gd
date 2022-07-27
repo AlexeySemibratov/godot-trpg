@@ -19,7 +19,7 @@ var tower_builder: TowerBuilder
 func _ready():
 	_setup_base_ui()
 	tower_builder = TowerBuilder.new()
-	tower_builder.setup(map.get_node("DecorationLevel"), ui)
+	tower_builder.setup(map.constructions, map.building_grid, ui)
 	add_child(tower_builder)
 	shop.add_towers(TowerEntityManager.TOWERS_DICT)
 	shop.connect("on_button_clicked", tower_builder, "setup_build_mode")

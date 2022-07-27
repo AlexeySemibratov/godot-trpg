@@ -4,6 +4,7 @@ class_name TowerBuilder
 signal on_build_mode_enabled(tower_to_build)
 
 var map: TileMap
+var grid: TileMap
 var ui: CanvasLayer
 
 var build_mode_enabled = false
@@ -16,8 +17,12 @@ var build_type
 const TILE_EMPTY_ID = -1
 const TILE_TOWER_ID = 0
 
-func setup(_map: Node2D, _ui: CanvasLayer):
+const TILE_ID_AVAILABLE = 0
+const TILE_ID_BLOCK = 1
+
+func setup(_map: TileMap, _grid: TileMap, _ui: CanvasLayer):
 	map = _map
+	grid = _grid
 	ui = _ui
 
 func _process(delta):
@@ -35,6 +40,8 @@ func setup_build_mode(tower):
 	if (build_mode_enabled):
 		cancel_build_mode()
 		
+	grid.visible = true
+		
 	var tower_node = tower["node"]
 	build_mode_enabled = true
 	tower_to_build = tower_node
@@ -42,11 +49,12 @@ func setup_build_mode(tower):
 	
 func update_build_preview():
 	var mouse_pos = get_global_mouse_position()
-	var current_tile = map.world_to_map(mouse_pos)
-	var tile_pos = map.map_to_world(current_tile)
 	
-	var current_tile_at_map = map.get_cellv(current_tile)
-	if current_tile_at_map == TILE_EMPTY_ID:
+	var tile = grid.world_to_map(mouse_pos)
+	var tile_pos = grid.map_to_world(tile)
+	var tile_id = grid.get_cellv(tile)
+	
+	if tile_id == TILE_ID_AVAILABLE:
 		can_build_here = true
 		build_location = tile_pos
 	else:
@@ -56,6 +64,7 @@ func update_build_preview():
 
 func cancel_build_mode():
 	if (build_mode_enabled):
+		grid.visible = false
 		build_mode_enabled = false
 		can_build_here = false
 		ui.remove_preview()
@@ -63,9 +72,10 @@ func cancel_build_mode():
 func build_if_can():
 	if (build_mode_enabled and can_build_here):
 		var tower = load(tower_to_build).instance()
-		tower.position = build_location
 		map.add_child(tower, true)
+		tower.position = build_location
 		var tile_coord = map.world_to_map(build_location)
-		map.set_cellv(tile_coord, TILE_TOWER_ID)
+		
+		grid.set_cellv(tile_coord, TILE_ID_BLOCK)
 		
 		cancel_build_mode()

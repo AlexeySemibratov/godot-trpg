@@ -17,6 +17,6 @@ func _play_destory_animation():
 	var animation = destroy_animation.instance()
 	animation.global_position = global_position
 	animation.rotation = rotation
-	get_map().decorations.add_child(animation)
+	get_map().road.add_child(animation)
 	animation.start_animation()
 	
