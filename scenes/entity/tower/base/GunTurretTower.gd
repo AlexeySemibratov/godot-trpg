@@ -4,9 +4,6 @@ class_name GunTurretTower
 #Tower rotation speed in degress per second
 export var rotation_speed_deg = 0
 
-#Reloading time in second
-export var reload_time = 1
-
 export var active_range = 500
 
 export(NodePath) var range_area_node
@@ -16,16 +13,11 @@ onready var range_area: Area2D = get_node(range_area_node)
 onready var tower_turret: Node2D = get_node(turret_node)
 onready var detector_ray: RayCast2D
 
-signal on_shot
-signal on_reloading_time_changed(value, max_value)
-signal on_reloading_finished
-
 var is_active = true
 
 onready var rotation_speed = deg2rad(rotation_speed_deg)
 
 var ready_to_fire = true
-var current_reload_time = 0
 
 var current_target_ref: WeakRef = weakref(null)
 
@@ -62,7 +54,6 @@ func _physics_process(delta):
 	_process_ai(delta)
 	_process_enemy_targeting(delta)
 	_process_shooting(delta)
-	_process_reloading(delta)
 	
 func rotate_tower_to(delta, pos):
 	var angle = tower_turret.get_angle_to(pos)
@@ -74,9 +65,6 @@ func rotate_tower_to(delta, pos):
 			tower_turret.rotation += actual_speed
 		if (angle < 0):	
 			tower_turret.rotation -= actual_speed
-		
-func fire(enemy: EnemyBase):
-	pass
 	
 func activate():
 	is_active = true
@@ -92,22 +80,10 @@ func find_enemy() -> EnemyBase:
 			return target
 	
 	return null
-		
-func _shoot(enemy: EnemyBase):
-	if (ready_to_fire):
-		ready_to_fire = false
-		fire(enemy)
-		emit_signal("on_shot")
-		current_reload_time = reload_time
-		
-func _process_reloading(delta):
-	if (current_reload_time > 0):
-		current_reload_time = max(0, current_reload_time - delta)
-		emit_signal("on_reloading_time_changed", current_reload_time, reload_time)
-	elif (ready_to_fire == false):
-		ready_to_fire = true
-		emit_signal("on_reloading_finished")
-		
+	
+func on_enemy_in_fire_range(enemy: EnemyBase):
+	pass
+
 func _process_enemy_targeting(delta):
 	if (!current_target_ref.get_ref()):
 		return
@@ -115,13 +91,13 @@ func _process_enemy_targeting(delta):
 	rotate_tower_to(delta, current_target_ref.get_ref().get_global_position())
 		
 func _process_shooting(delta):
-	if (!current_target_ref.get_ref()):
+	if (!current_target_ref.get_ref() or !ready_to_fire):
 		return
 		
 	if (detector_ray.is_colliding()):
 		var collider = detector_ray.get_collider()
 		if(collider.owner is EnemyBase):
-			_shoot(current_target_ref.get_ref())
+			on_enemy_in_fire_range(current_target_ref.get_ref())
 
 func _process_ai(delta):
 	if (current_target_ref.get_ref()):

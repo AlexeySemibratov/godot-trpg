@@ -6,7 +6,14 @@ onready var muzzle_node = $TowerGun/Muzzle
 
 var bullet_scene = preload("res://scenes/entity/projectile/AutoAimBullet.tscn")
 	
-func fire(enemy: EnemyBase):
+onready var shooting_component = $TowerGUI/SingleBulletComponent
+	
+func on_enemy_in_fire_range(enemy: EnemyBase):
+	_spawn_bullet(enemy)
+	shooting_component.on_shot()
+	ready_to_fire = false
+
+func _spawn_bullet(enemy: EnemyBase):
 	var start_pos = muzzle_node.global_position
 	
 	var bullet = bullet_scene.instance()
@@ -18,3 +25,7 @@ func fire(enemy: EnemyBase):
 
 func _on_bullet_hit_enemy(enemy: EnemyBase):
 	enemy.take_damage(damage)
+
+
+func _on_SingleBulletComponent_on_reloading_finished():
+	ready_to_fire = true

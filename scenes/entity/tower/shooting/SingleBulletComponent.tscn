@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/entity/tower/shooting/SingleBulletComponent.gd" type="Script" id=1]
+
+[node name="Control" type="Container"]
+script = ExtResource( 1 )
+
+[node name="ReloadingLabel" type="Label" parent="."]
+margin_bottom = 14.0
+grow_horizontal = 2
+valign = 1
+
+[node name="ReloadingTimer" type="Timer" parent="."]
