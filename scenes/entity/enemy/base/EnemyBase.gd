@@ -5,14 +5,18 @@ export var max_hp = 100
 export var armor = 0
 export var speed = 200
 
-export(NodePath) var body_node
-
 signal on_dead
 signal on_damage_taken(amount, max_hp)
 
-onready var body: KinematicBody2D = get_node(body_node)
+onready var hp_indicator = $Indicator
+onready var hp_indicator_timer = $IndicatorVisibilityTimer
 
 onready var current_hp = max_hp
+
+func _ready():
+	hp_indicator.visible = false
+	hp_indicator.max_value = max_hp
+	hp_indicator.value = current_hp
 
 func _process(delta):
 	_process_movement(delta)
@@ -36,4 +40,19 @@ func get_map():
 func take_damage(amount):
 	emit_signal("on_damage_taken", amount, max_hp)
 	current_hp = max(0, current_hp - amount)
+	_maybe_dead()
+	_update_hp_indicator()	
 	
+func _maybe_dead():
+	if (current_hp <= 0):
+		emit_signal("on_dead")
+		on_destroyed()
+		queue_free()
+		
+func _update_hp_indicator():
+	hp_indicator_timer.start()
+	hp_indicator.visible = true
+	hp_indicator.value = current_hp
+
+func _on_IndicatorVisibilityTimer_timeout():
+	hp_indicator.visible = false

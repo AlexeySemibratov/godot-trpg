@@ -51,3 +51,8 @@ script = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BaseArea"]
 position = Vector2( 1080.5, 432 )
 shape = SubResource( 2 )
+
+[node name="WaveDelayTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="WaveDelayTimer" to="." method="_on_WaveDelayTimer_timeout"]

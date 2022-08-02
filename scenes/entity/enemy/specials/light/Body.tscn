@@ -18,7 +18,6 @@ animations = [ {
 [node name="Tracks" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Body" type="Sprite" parent="."]
