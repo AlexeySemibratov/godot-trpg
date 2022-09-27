@@ -12,8 +12,8 @@ onready var base = $BaseArea
 onready var wave_delay = $WaveDelayTimer
 const WAVE_DELAY = 10
 
-var current_wave = 0
-var waves_count = [3, 5, 8]
+var current_wave = -1
+var waves_count = [3, 4, 5]
 
 var enemy_scene = preload("res://scenes/entity/enemy/specials/light/LightTank.tscn")
 
@@ -40,6 +40,7 @@ func _start_next_wave():
 		current_wave = next_wave
 		var enemies_in_wave = waves_count[next_wave]
 		for i in range(enemies_in_wave):
-			path.add_child(enemy_scene.instance())
+			var enemy = enemy_scene.instance()
+			path.add_child(enemy)
 			var delay = rand_range(1, 3)
 			yield(get_tree().create_timer(delay), "timeout")

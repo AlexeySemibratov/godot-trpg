@@ -8,13 +8,14 @@ export var speed = 200
 signal on_dead
 signal on_damage_taken(amount, max_hp)
 
-onready var hp_indicator = $Indicator
+onready var hp_indicator = $UI/Indicator
 onready var hp_indicator_timer = $IndicatorVisibilityTimer
 
 onready var current_hp = max_hp
 
 func _ready():
-	hp_indicator.visible = false
+	hp_indicator.show()
+	hp_indicator.visible = true
 	hp_indicator.max_value = max_hp
 	hp_indicator.value = current_hp
 

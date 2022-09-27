@@ -5,14 +5,14 @@
 [ext_resource path="res://scenes/entity/enemy/specials/light/LightTank.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 29, 24.5 )
+extents = Vector2( 29.5, 23.5 )
 
 [node name="Node2D" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
 speed = 100
 
-[node name="Body" parent="Body" index="0" instance=ExtResource( 1 )]
+[node name="Body" parent="BodyArea" index="0" instance=ExtResource( 1 )]
 
-[node name="CollisionShape2D" parent="Body" index="1"]
-position = Vector2( -3, -0.5 )
+[node name="CollisionShape2D" parent="BodyArea" index="1"]
+position = Vector2( -2.5, -0.5 )
 shape = SubResource( 1 )

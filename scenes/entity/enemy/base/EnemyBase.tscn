@@ -1,26 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/entity/enemy/base/EnemyBase.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ui/indicators/HPIndicator.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/entity/enemy/base/UI.gd" type="Script" id=3]
 
 [node name="Node2D" type="PathFollow2D"]
 script = ExtResource( 1 )
 
-[node name="Indicator" parent="." instance=ExtResource( 2 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = -54.0
-margin_right = 272.0
-margin_bottom = -33.0
-rect_scale = Vector2( 0.35, 0.35 )
-rect_pivot_offset = Vector2( -74, 0 )
-
 [node name="IndicatorVisibilityTimer" type="Timer" parent="."]
 wait_time = 1.5
 
-[node name="Body" type="KinematicBody2D" parent="."]
+[node name="BodyArea" type="KinematicBody2D" parent="."]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
+
+[node name="UI" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Indicator" parent="UI" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -48.0
+margin_top = -50.0
+margin_right = 224.0
+margin_bottom = -29.0
+rect_scale = Vector2( 0.35, 0.35 )
+script = null
 
 [connection signal="timeout" from="IndicatorVisibilityTimer" to="." method="_on_IndicatorVisibilityTimer_timeout"]
