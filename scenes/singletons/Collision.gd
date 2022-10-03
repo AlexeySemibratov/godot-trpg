@@ -1,3 +1,3 @@
 extends Node
 
-const MASK_BIT_ENEMIES = 1
+const MASK_BIT_ENEMIES = 2

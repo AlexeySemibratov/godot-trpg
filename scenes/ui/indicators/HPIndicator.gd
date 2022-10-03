@@ -1,1 +1,1 @@
-extends TextureProgress
+extends TextureProgressBar

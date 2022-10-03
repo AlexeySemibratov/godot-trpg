@@ -13,7 +13,7 @@ func setup(_direction: Vector2, _target: EnemyBase):
 
 func _physics_process(delta):
 	acceleration += seek()
-	direction += (acceleration * delta).clamped(speed)
+	direction += clamp(Vector2.ZERO, acceleration * delta, speed * Vector2(1, 0))
 	rotation = direction.angle()
 	position += direction * delta
 		

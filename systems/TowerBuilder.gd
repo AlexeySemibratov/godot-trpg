@@ -20,6 +20,11 @@ const TILE_TOWER_ID = 0
 const TILE_ID_AVAILABLE = 0
 const TILE_ID_BLOCK = 1
 
+const TILES_ID = 0
+const ATLAS_COORDS_BLOCK = Vector2i(1, 0)
+
+const GRID_CELL_SIZE = 64
+
 func setup(_map: TileMap, _grid: TileMap, _ui: CanvasLayer):
 	map = _map
 	grid = _grid
@@ -36,7 +41,6 @@ func _input(event):
 		cancel_build_mode()
 	
 func setup_build_mode(tower):
-	print("setup build mode")
 	if (build_mode_enabled):
 		cancel_build_mode()
 		
@@ -48,19 +52,20 @@ func setup_build_mode(tower):
 	ui.set_tower_preview(tower_node, get_global_mouse_position())
 	
 func update_build_preview():
-	var mouse_pos = get_global_mouse_position()
+	var mouse_pos = grid.get_global_mouse_position()
 	
-	var tile = grid.world_to_map(mouse_pos)
-	var tile_pos = grid.map_to_world(tile)
-	var tile_id = grid.get_cellv(tile)
+	var tile = grid.local_to_map(mouse_pos)
+	var tile_pos = grid.map_to_local(tile)
+	var tile_atlas = grid.get_cell_atlas_coords(0, tile)
 	
-	if tile_id == TILE_ID_AVAILABLE:
-		can_build_here = true
-		build_location = tile_pos
-	else:
-		can_build_here = false
-		build_location = null
-	ui.update_tower_preview(tile_pos, can_build_here)
+	can_build_here = tile_atlas != ATLAS_COORDS_BLOCK
+	build_location = tile_pos if (can_build_here) else null
+	
+	var preview_pos = shift_to_half_cell_size(get_viewport().get_mouse_position())
+	ui.update_tower_preview(preview_pos, can_build_here)
+	
+func shift_to_half_cell_size(value: Vector2): 
+	return value - Vector2(GRID_CELL_SIZE / 2, GRID_CELL_SIZE / 2)
 
 func cancel_build_mode():
 	if (build_mode_enabled):
@@ -71,11 +76,10 @@ func cancel_build_mode():
 
 func build_if_can():
 	if (build_mode_enabled and can_build_here):
-		var tower = load(tower_to_build).instance()
+		var tower = load(tower_to_build).instantiate()
 		map.add_child(tower, true)
-		tower.position = build_location
-		var tile_coord = map.world_to_map(build_location)
-		
-		grid.set_cellv(tile_coord, TILE_ID_BLOCK)
-		
+		tower.position = shift_to_half_cell_size(build_location)
+		var tile_coord = map.local_to_map(build_location)
+		grid.set_cell(0, tile_coord, TILES_ID, ATLAS_COORDS_BLOCK)
+		print("Set cell at " + str(tile_coord))
 		cancel_build_mode()

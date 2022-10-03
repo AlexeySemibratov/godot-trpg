@@ -3,13 +3,13 @@ extends VBoxContainer
 signal on_reloading_time_changed(value, max_value, type)
 signal on_reloading_finished
 
-export var drum_size = 5
-export var drum_reloading_time = 10
-export var drum_shift_time = 0.5
+@export var drum_size = 5
+@export var drum_reloading_time = 10
+@export var drum_shift_time = 0.5
 
-onready var reloading_label = $ReloadingIndicator
-onready var drum_label = $DrumIndicator
-onready var timer = $Timer
+@onready var reloading_label = $ReloadingIndicator
+@onready var drum_label = $DrumIndicator
+@onready var timer = $Timer
 
 enum ReloadingState {
 	DRUM,
@@ -24,7 +24,7 @@ const DRUM_RELOADING_TEXT = "%0.1f"
 const DRUM_STATUS_TEXT = "%d/%d"
 
 func _ready():
-	timer.connect("timeout", self, "_on_timeout")
+	timer.connect("timeout",Callable(self,"_on_timeout"))
 	current_drum_size = drum_size
 
 func _process(delta):

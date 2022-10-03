@@ -4,7 +4,7 @@
 code = "shader_type canvas_item;
 
 uniform float width: hint_range(0.0, 10.0);
-uniform vec4 color: hint_color;
+uniform vec4 color: source_color;
 
 const vec2 dirs[] = { 
 	vec2(1.0, 0.0), 

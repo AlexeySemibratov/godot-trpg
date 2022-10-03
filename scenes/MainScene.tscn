@@ -1,18 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://b0c8p8dyl3bsn"]
 
-[ext_resource path="res://scenes/UILayer.gd" type="Script" id=1]
-[ext_resource path="res://scenes/ui/IngameUi.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/MainScene.gd" type="Script" id=5]
-[ext_resource path="res://scenes/maps/GameMap.tscn" type="PackedScene" id=6]
+[ext_resource type="Script" path="res://scenes/UILayer.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dxm1h6o86k05p" path="res://scenes/ui/IngameUi.tscn" id="4"]
+[ext_resource type="Script" path="res://scenes/MainScene.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://cgwunn1kwgfjl" path="res://scenes/maps/GameMap.tscn" id="6"]
 
 [node name="MainScene" type="Node2D"]
-position = Vector2( 0, -1 )
-script = ExtResource( 5 )
+position = Vector2(1, 0)
+script = ExtResource("5")
 
-[node name="GameMap" parent="." instance=ExtResource( 6 )]
+[node name="GameMap" parent="." instance=ExtResource("6")]
 
-[node name="UILayer" type="CanvasLayer" parent="."]
-script = ExtResource( 1 )
+[node name="Camera2d" type="Camera2D" parent="."]
+position = Vector2(511, 383)
+current = true
 
-[node name="IngameUi" parent="UILayer" instance=ExtResource( 4 )]
+[node name="UILayer" type="CanvasLayer" parent="Camera2d"]
+unique_name_in_owner = true
+script = ExtResource("1")
+
+[node name="IngameUi" parent="Camera2d/UILayer" instance=ExtResource("4")]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_bottom = 1.087
+offset_left = -3.0
+offset_top = -2.0
+offset_bottom = -58.376
 mouse_filter = 2

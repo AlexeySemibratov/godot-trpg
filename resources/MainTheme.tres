@@ -1,30 +1,53 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://vp1023g85ie6"]
 
-[ext_resource path="res://resources/fonts/junegull.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://resources/textures/ui/menu/menu_button.png" type="Texture" id=3]
+[ext_resource type="FontFile" uid="uid://bijna2bh30dkl" path="res://resources/fonts/junegull.ttf" id="1"]
+[ext_resource type="Texture2D" uid="uid://7g8dqx72s0cc" path="res://resources/textures/ui/menu/menu_button.png" id="3"]
 
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 2323, 554 )
+[sub_resource type="StyleBoxTexture" id="3"]
+texture = ExtResource("3")
+region_rect = Rect2(0, 0, 2323, 554)
 
-[sub_resource type="DynamicFont" id=2]
-size = 30
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_char = 1
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = [ExtResource("1")]
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+cache/0/14/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/14/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/14/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/28/0/ascent = 0.0
+cache/0/28/0/descent = 0.0
+cache/0/28/0/underline_position = 0.0
+cache/0/28/0/underline_thickness = 0.0
+cache/0/28/0/scale = 1.0
+cache/0/28/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/28/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/28/0/kerning_overrides/28/0 = Vector2(0, 0)
 
 [resource]
-default_font = SubResource( 2 )
-Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
-Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
-Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+default_font = SubResource("2")
+Button/colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+Button/colors/font_color_disabled = Color(0.9, 0.9, 0.9, 0.2)
+Button/colors/font_color_focus = Color(0.94, 0.94, 0.94, 1)
+Button/colors/font_color_hover = Color(0.94, 0.94, 0.94, 1)
+Button/colors/font_color_pressed = Color(1, 1, 1, 1)
 Button/constants/hseparation = 2
-Button/fonts/font = null
-Button/styles/disabled = SubResource( 3 )
-Button/styles/focus = SubResource( 3 )
-Button/styles/hover = SubResource( 3 )
-Button/styles/normal = SubResource( 3 )
-Button/styles/pressed = SubResource( 3 )
+Button/fonts/font = ExtResource("1")
+Button/styles/disabled = SubResource("3")
+Button/styles/focus = SubResource("3")
+Button/styles/hover = SubResource("3")
+Button/styles/normal = SubResource("3")
+Button/styles/pressed = SubResource("3")

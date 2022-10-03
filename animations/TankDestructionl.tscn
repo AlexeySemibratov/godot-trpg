@@ -1,88 +1,92 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://c6qmon76n0m18"]
 
-[ext_resource path="res://animations/TankDestruction.gd" type="Script" id=1]
-[ext_resource path="res://scenes/entity/enemy/specials/light/Body.tscn" type="PackedScene" id=3]
+[ext_resource type="Script" path="res://animations/TankDestruction.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bu80lt7iwjuvs" path="res://scenes/entity/enemy/specials/light/Body.tscn" id="3"]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id="1"]
 resource_name = "explosion 1"
 length = 0.5
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Body:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.0, 25.0 ]
+"values": [0.0, 25.0]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Body:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 12, 25 ) ]
+"values": [Vector2(0, 0), Vector2(12, 25)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Body/Tower:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.0, -15.0 ]
+"values": [0.0, -15.0]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "explosion 2"
 length = 0.5
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Body:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.0, -15.0 ]
+"values": [0.0, -15.0]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Body:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 25, -15 ) ]
+"values": [Vector2(0, 0), Vector2(25, -15)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l01o0"]
+_data = {
+"explosion 1": SubResource("1"),
+"explosion 2": SubResource("2")
 }
 
 [node name="TankHull" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="Body" parent="." instance=ExtResource( 3 )]
-modulate = Color( 0.278431, 0.270588, 0.270588, 1 )
-
-[node name="Tracks" parent="Body" index="0"]
-frame = 0
+[node name="Body" parent="." instance=ExtResource("3")]
+modulate = Color(0.278431, 0.270588, 0.270588, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/explosion 1" = SubResource( 1 )
-"anims/explosion 2" = SubResource( 2 )
+libraries = {
+"": SubResource("AnimationLibrary_l01o0")
+}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

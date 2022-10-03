@@ -8,13 +8,13 @@ func on_destroyed():
 	_spawn_explosion_particles()
 	
 func _spawn_explosion_particles():
-	var particles = explosion.instance()
+	var particles = explosion.instantiate()
 	get_tree().root.add_child(particles)
 	particles.global_position = global_position
 	particles.emit()
 	
 func _play_destroy_animation():
-	var animation = destroy_animation.instance()
+	var animation = destroy_animation.instantiate()
 	animation.global_position = global_position
 	animation.rotation = rotation
 	get_map().road.add_child(animation)

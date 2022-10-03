@@ -1,18 +1,18 @@
 extends Control
 
-export(int) var max_value
-export(float, 0, 1) var damaged_limit = 0.5
-export(float, 0, 1) var very_damaged_limit = 0.25
+@export var max_value: int
+@export var damaged_limit = 0.5 # (float, 0, 1)
+@export var very_damaged_limit = 0.25 # (float, 0, 1)
 
-onready var texture = $TextureRect
-onready var label = $Label
-onready var animation = $AnimationPlayer
+@onready var texture = $TextureRect
+@onready var label = %BaseHP
+@onready var animation = $AnimationPlayer
 
 const MIN = 0
 
 var current_value
 	
-onready var icons = [
+@onready var icons = [
 	"res://resources/textures/ui/shield.png", 
 	"res://resources/textures/ui/shield_damaged.png", 
 	"res://resources/textures/ui/shield_very_damaged.png"
@@ -39,9 +39,8 @@ func update_icon(value):
 		icon_index = 1
 	else:
 		icon_index = 0
-	
-	var image_texture = ImageTexture.new()
-	var image = Image.new()
-	image_texture.load(icons[icon_index])
+		
+	var image = Image.load_from_file(icons[icon_index])
+	var image_texture = ImageTexture.create_from_image(image)
 	texture.texture = image_texture
 

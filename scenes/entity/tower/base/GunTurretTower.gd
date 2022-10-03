@@ -2,20 +2,20 @@ extends Node2D
 class_name GunTurretTower
 
 #Tower rotation speed in degress per second
-export var rotation_speed_deg = 0
+@export var rotation_speed_deg = 0
 
-export var active_range = 500
+@export var active_range = 500
 
-export(NodePath) var range_area_node
-export(NodePath) var turret_node
+@export var range_area_node: NodePath
+@export var turret_node: NodePath
 
-onready var range_area: Area2D = get_node(range_area_node)
-onready var tower_turret: Node2D = get_node(turret_node)
-onready var detector_ray: RayCast2D
+@onready var range_area: Area2D = get_node(range_area_node)
+@onready var tower_turret: Node2D = get_node(turret_node)
+@onready var detector_ray: RayCast2D
 
 var is_active = true
 
-onready var rotation_speed = deg2rad(rotation_speed_deg)
+@onready var rotation_speed = deg_to_rad(rotation_speed_deg)
 
 var ready_to_fire = true
 
@@ -35,13 +35,13 @@ func _setup_collision():
 	
 func _setup_detector_ray():
 	detector_ray = RayCast2D.new()
-	detector_ray.cast_to = Vector2.RIGHT * active_range
-	detector_ray.set_collision_mask_bit(Collision.MASK_BIT_ENEMIES, true)
+	detector_ray.target_position = Vector2.RIGHT * active_range
 	tower_turret.add_child(detector_ray)
+	detector_ray.set_collision_mask_value(Collision.MASK_BIT_ENEMIES, true)
 	detector_ray.enabled = true
 	
 func _setup_range_area():
-	range_area.connect("body_exited", self, "_on_body_leave_area")
+	range_area.connect("body_exited",Callable(self,"_on_body_leave_area"))
 	
 func _on_body_leave_area(body):
 	var enemy = body.owner
@@ -101,7 +101,7 @@ func _process_shooting(delta):
 
 func _process_ai(delta):
 	if (current_target_ref.get_ref()):
-		 return
+		return
 		
 	var enemy: EnemyBase = find_enemy()
 	if (enemy):

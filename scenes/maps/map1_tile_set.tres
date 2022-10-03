@@ -1,0 +1,19 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cr5qfm4i52k65"]
+
+[ext_resource type="Texture2D" uid="uid://b7k1ucjvxeyfr" path="res://resources/textures/tiles/map1_tilesheet.png" id="1_mrtsf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a0ks5"]
+texture = ExtResource("1_mrtsf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_a0ks5")

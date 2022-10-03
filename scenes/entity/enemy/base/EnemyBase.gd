@@ -1,17 +1,17 @@
 extends PathFollow2D
 class_name EnemyBase
 
-export var max_hp = 100
-export var armor = 0
-export var speed = 200
+@export var max_hp = 100
+@export var armor = 0
+@export var speed = 200
 
 signal on_dead
 signal on_damage_taken(amount, max_hp)
 
-onready var hp_indicator = $UI/Indicator
-onready var hp_indicator_timer = $IndicatorVisibilityTimer
+@onready var hp_indicator = $UI/Indicator
+@onready var hp_indicator_timer = $IndicatorVisibilityTimer
 
-onready var current_hp = max_hp
+@onready var current_hp = max_hp
 
 func _ready():
 	hp_indicator.show()
@@ -24,7 +24,7 @@ func _process(delta):
 	_process_living(delta)
 	
 func _process_movement(delta):
-	offset += speed * delta
+	progress += speed * delta
 
 func _process_living(delata):
 	if (current_hp <= 0):

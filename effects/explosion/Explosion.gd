@@ -1,13 +1,13 @@
 extends Node2D
 
-onready var smoke = $Smoke
-onready var timer = $Timer
+@onready var smoke = $Smoke
+@onready var timer = $Timer
 
-onready var lifetime = smoke.lifetime + 1
+@onready var lifetime = smoke.lifetime + 1
 	
 func emit():
 	timer.wait_time = lifetime
-	timer.connect("timeout", self, "queue_free")
+	timer.connect("timeout",Callable(self,"queue_free"))
 	timer.start()
 	smoke.one_shot = true
 	smoke.emitting = true

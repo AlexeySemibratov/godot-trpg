@@ -1,49 +1,50 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://cgidphycev0a7"]
 
-[ext_resource path="res://resources/textures/towers/towerDefense_tile249.png" type="Texture" id=1]
-[ext_resource path="res://resources/textures/towers/towerDefense_tile180.png" type="Texture" id=2]
-[ext_resource path="res://scenes/entity/tower/TowerGunCommon.gd" type="Script" id=3]
-[ext_resource path="res://scenes/entity/tower/shooting/AutoloaderBulletComponent.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/entity/tower/shooting/SingleBulletComponent.tscn" type="PackedScene" id=5]
-[ext_resource path="res://effects/fire/FireFlow.tscn" type="PackedScene" id=6]
+[ext_resource type="Texture2D" uid="uid://d4dhw074l0hty" path="res://resources/textures/towers/towerDefense_tile249.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dtk17e4dt06rf" path="res://resources/textures/towers/towerDefense_tile180.png" id="2"]
+[ext_resource type="Script" path="res://scenes/entity/tower/TowerGunCommon.gd" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/entity/tower/shooting/AutoloaderBulletComponent.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/entity/tower/shooting/SingleBulletComponent.tscn" id="5"]
 
 [node name="TowerGunCommon" type="Node2D"]
-script = ExtResource( 3 )
+script = ExtResource("3")
+damage = 25
 rotation_speed_deg = 180
 active_range = 200
 range_area_node = NodePath("Area2D")
 turret_node = NodePath("TowerGun")
-damage = 25
 
-[node name="TowerBase" type="Sprite" parent="."]
-position = Vector2( 32, 32 )
-texture = ExtResource( 2 )
+[node name="TowerBase" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("2")
 
-[node name="TowerGun" type="Sprite" parent="."]
-position = Vector2( 32, 32 )
-texture = ExtResource( 1 )
-offset = Vector2( 16, 0 )
+[node name="TowerGun" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("1")
+offset = Vector2(16, 0)
 
-[node name="GunMuzzle" type="Position2D" parent="TowerGun"]
-position = Vector2( 48, 0 )
-
-[node name="Fireflow" parent="TowerGun" instance=ExtResource( 6 )]
-position = Vector2( 52, 0 )
+[node name="GunMuzzle" type="Marker2D" parent="TowerGun"]
+position = Vector2(48, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2( 32, 32 )
+position = Vector2(32, 32)
 collision_mask = 3
 
 [node name="TowerGUI" type="Control" parent="."]
-margin_top = -16.0
-margin_right = 64.0
-margin_bottom = 62.0
+layout_mode = 3
+anchors_preset = 0
+offset_top = -16.0
+offset_right = 64.0
+offset_bottom = 62.0
 
-[node name="SingleBulletComponent" parent="TowerGUI" instance=ExtResource( 5 )]
+[node name="SingleBulletComponent" parent="TowerGUI" instance=ExtResource("5")]
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
+grow_horizontal = 2
 
-[node name="AutloaderBulletComponent" parent="TowerGUI" instance=ExtResource( 4 )]
+[node name="AutloaderBulletComponent" parent="TowerGUI" instance=ExtResource("4")]
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 drum_reloading_time = 5
