@@ -42,5 +42,5 @@ func _start_next_wave():
 		for i in range(enemies_in_wave):
 			var enemy = enemy_scene.instantiate()
 			path.add_child(enemy)
-			var delay = randf_range(0.5, 1.5)
+			var delay = randf_range(0.5, 1.0)
 			await get_tree().create_timer(delay).timeout

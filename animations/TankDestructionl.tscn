@@ -1,7 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6qmon76n0m18"]
+[gd_scene load_steps=6 format=3 uid="uid://cjvy8ljumdmjt"]
 
-[ext_resource type="Script" path="res://animations/TankDestruction.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bu80lt7iwjuvs" path="res://scenes/entity/enemy/specials/light/Body.tscn" id="3"]
+
+[sub_resource type="GDScript" id="GDScript_pfx2w"]
+script/source = "extends Node2D
+
+@onready var animation = $AnimationPlayer
+@onready var timer = $Timer
+@onready var body = $Body
+
+var anims = [
+	\"explosion 1\",
+	\"explosion 2\",
+]
+
+func _ready():
+	body.get_node(\"Tracks\").playing = false
+
+func start_animation():
+	timer.connect(\"timeout\",Callable(self,\"queue_free\"))
+	timer.start()
+	animation.play(_get_random_animation())
+	
+func _get_random_animation():
+	return anims[randi() % anims.size()]
+"
 
 [sub_resource type="Animation" id="1"]
 resource_name = "explosion 1"
@@ -78,7 +101,7 @@ _data = {
 }
 
 [node name="TankHull" type="Node2D"]
-script = ExtResource("1")
+script = SubResource("GDScript_pfx2w")
 
 [node name="Body" parent="." instance=ExtResource("3")]
 modulate = Color(0.278431, 0.270588, 0.270588, 1)

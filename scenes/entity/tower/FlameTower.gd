@@ -13,6 +13,13 @@ func on_enemy_in_fire_range(enemy: EnemyBase):
 	fire_component.fire()
 	
 func on_target_not_colliding(target):
+	_stop_fire()
+	
+func on_target_cleared(enemy: EnemyBase):
+	super.on_target_cleared(enemy)
+	_stop_fire()
+	
+func _stop_fire():
 	fire_component.stop_fire()
 	
 func _hit_enemies_in_range(damage):

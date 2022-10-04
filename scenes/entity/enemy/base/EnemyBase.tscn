@@ -28,4 +28,10 @@ offset_bottom = -29.0
 scale = Vector2(0.35, 0.35)
 script = null
 
+[node name="DespawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="IndicatorVisibilityTimer" to="." method="_on_IndicatorVisibilityTimer_timeout"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

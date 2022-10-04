@@ -10,9 +10,9 @@ signal on_damage(amount)
 var particles
 
 @export var reloading_time = 5
-@export var overflow_time_limit = 6
+@export var overflow_time_limit = 100
 @export var damage_delay_time = 0.4
-@export var damage = 12
+@export var damage = 50
 
 const RELOADING_TEXT = "%0.1f/%0.1f"
 const OVERHEAT_TEXT = "%d%%"

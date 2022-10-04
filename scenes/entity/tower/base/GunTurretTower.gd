@@ -77,7 +77,8 @@ func find_enemy() -> EnemyBase:
 	for enemy in enemies_in_range:
 		if (enemy && enemy.owner is EnemyBase):
 			var target: EnemyBase = enemy.owner
-			return target
+			if (target.is_alive()):
+				return target
 	
 	return null
 	
@@ -103,6 +104,7 @@ func _process_shooting(delta):
 	if (detector_ray.is_colliding()):
 		var collider = detector_ray.get_collider()
 		if(collider.owner is EnemyBase):
+			var enemy: EnemyBase = collider.owner
 			on_enemy_in_fire_range(current_target_ref.get_ref())
 	else:
 		on_target_not_colliding(current_target_ref.get_ref())
@@ -114,6 +116,7 @@ func _process_ai(delta):
 		
 	var enemy: EnemyBase = find_enemy()
 	if (enemy):
+		enemy.on_dead.connect(self._clear_target)
 		current_target_ref = weakref(enemy)
 		
 func _clear_target():
