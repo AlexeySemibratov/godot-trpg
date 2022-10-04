@@ -13,7 +13,7 @@ extends Node2D
 const WAVE_DELAY = 10
 
 var current_wave = -1
-var waves_count = [3, 4, 5]
+var waves_count = [5, 6, 8]
 
 var enemy_scene = preload("res://scenes/entity/enemy/specials/light/LightTank.tscn")
 
@@ -42,5 +42,5 @@ func _start_next_wave():
 		for i in range(enemies_in_wave):
 			var enemy = enemy_scene.instantiate()
 			path.add_child(enemy)
-			var delay = randf_range(1, 3)
+			var delay = randf_range(0.5, 1.5)
 			await get_tree().create_timer(delay).timeout

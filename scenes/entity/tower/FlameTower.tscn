@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm260gcdgodge"]
+
+[ext_resource type="Texture2D" uid="uid://dtk17e4dt06rf" path="res://resources/textures/towers/towerDefense_tile180.png" id="1_fyucn"]
+[ext_resource type="Script" path="res://scenes/entity/tower/FlameTower.gd" id="1_sp1cy"]
+[ext_resource type="Texture2D" uid="uid://cvimygh8kul8b" path="res://resources/textures/towers/flamethrower_turret.png" id="2_d8odk"]
+[ext_resource type="PackedScene" uid="uid://ckvuklniifwxa" path="res://effects/fire/FireFlow.tscn" id="4_vkiqi"]
+[ext_resource type="Script" path="res://scenes/entity/tower/FireComponent.gd" id="5_h2lg4"]
+
+[node name="FlameThrower" type="Node2D"]
+script = ExtResource("1_sp1cy")
+rotation_speed_deg = 60
+active_range = 150
+range_area_node = NodePath("Area2d")
+turret_node = NodePath("Turret")
+
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+texture = ExtResource("1_fyucn")
+offset = Vector2(32, 32)
+
+[node name="Turret" type="Sprite2D" parent="."]
+position = Vector2(29, 32)
+texture = ExtResource("2_d8odk")
+offset = Vector2(14, 0)
+
+[node name="Muzzle" type="Marker2D" parent="Turret"]
+unique_name_in_owner = true
+position = Vector2(45, 0)
+
+[node name="Fireflow" parent="Turret/Muzzle" instance=ExtResource("4_vkiqi")]
+unique_name_in_owner = true
+position = Vector2(1, 1)
+
+[node name="FireArea" type="Area2D" parent="Turret/Muzzle"]
+unique_name_in_owner = true
+position = Vector2(1, 1)
+collision_mask = 3
+
+[node name="CollisionPolygon2d" type="CollisionPolygon2D" parent="Turret/Muzzle/FireArea"]
+position = Vector2(33.019, 3.5)
+scale = Vector2(4.59239, 3.53125)
+polygon = PackedVector2Array(-9, -1, 8.48817, -16, 14.5852, -10.9027, 18.5047, -0.707964, 15.674, 10.6195, 5.43965, 12.885)
+
+[node name="Area2d" type="Area2D" parent="."]
+position = Vector2(33, 30)
+collision_mask = 3
+
+[node name="FireComponent" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("5_h2lg4")
+
+[node name="DamageDelayTimer" type="Timer" parent="FireComponent"]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="ReloadingTimer" type="Timer" parent="FireComponent"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="OverheatTimer" type="Timer" parent="FireComponent"]
+unique_name_in_owner = true
+
+[node name="Label" type="Label" parent="FireComponent"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 13.0
+offset_top = -23.0
+offset_right = 53.0
+text = "100%"
+
+[connection signal="timeout" from="FireComponent/DamageDelayTimer" to="FireComponent" method="_on_damage_delay_timer_timeout"]
+[connection signal="timeout" from="FireComponent/ReloadingTimer" to="FireComponent" method="_on_reloading_timer_timeout"]

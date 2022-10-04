@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d4dhw074l0hty" path="res://resources/textures/towers/towerDefense_tile249.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://dtk17e4dt06rf" path="res://resources/textures/towers/towerDefense_tile180.png" id="2"]
 [ext_resource type="Script" path="res://scenes/entity/tower/TowerGunCommon.gd" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/entity/tower/shooting/AutoloaderBulletComponent.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dib2vexou0mhx" path="res://scenes/entity/tower/shooting/AutoloaderBulletComponent.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/entity/tower/shooting/SingleBulletComponent.tscn" id="5"]
 
 [node name="TowerGunCommon" type="Node2D"]
