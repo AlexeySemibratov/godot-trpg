@@ -1,4 +1,4 @@
-extends Node2D
+extends Tower
 class_name GunTurretTower
 
 #Tower rotation speed in degress per second

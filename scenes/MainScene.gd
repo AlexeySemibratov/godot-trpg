@@ -21,11 +21,11 @@ func _ready():
 	tower_builder = TowerBuilder.new()
 	tower_builder.setup(map.constructions, map.building_grid, ui)
 	add_child(tower_builder)
-	shop.add_towers(TowerEntityManager.TOWERS_DICT)
-	shop.connect("on_button_clicked",Callable(tower_builder,"setup_build_mode"))
+	shop.add_towers(Towers.TOWERS_DICT)
+	shop.on_button_clicked.connect(tower_builder.setup_build_mode)
 	
 func _setup_base_ui():
-	map.base.connect("on_base_hp_changed",Callable(self,"_update_base_ui"))
+	map.base.on_base_hp_changed.connect(self._update_base_ui)
 	map.base.setup(BASE_HP)
 	
 func _update_base_ui(value):

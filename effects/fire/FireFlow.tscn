@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckvuklniifwxa"]
+[gd_scene load_steps=14 format=3 uid="uid://ckvuklniifwxa"]
 
 [ext_resource type="Texture2D" uid="uid://d0lwduuvcljul" path="res://resources/textures/particles/flame_shape.png" id="1"]
 [ext_resource type="Script" path="res://effects/fire/FireFlow.gd" id="1_ienvx"]
-[ext_resource type="Material" uid="uid://ygjjyeaq1rj1" path="res://effects/fire/fire_material.tres" id="2"]
+[ext_resource type="Material" uid="uid://cjye5iet8joj5" path="res://effects/fire/fireflow_material.tres" id="3_0mdpk"]
 
 [sub_resource type="Gradient" id="6"]
 offsets = PackedFloat32Array(0, 0.376344, 0.701613, 1)
@@ -25,15 +25,47 @@ scale_curve = SubResource("4")
 color = Color(0.0980392, 0.0431373, 0.0431373, 1)
 color_ramp = SubResource("7")
 
+[sub_resource type="Gradient" id="Gradient_s26j1"]
+colors = PackedColorArray(0.216809, 0.190457, 0.195056, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_as323"]
+gradient = SubResource("Gradient_s26j1")
+
+[sub_resource type="Curve" id="Curve_jv01w"]
+_data = [Vector2(0, 0.0363636), 0.0, 0.0, 0, 0, Vector2(0.726531, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.627273), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uxe2a"]
+curve = SubResource("Curve_jv01w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l76g5"]
+spread = 16.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_min = 4.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_uxe2a")
+color_ramp = SubResource("GradientTexture1D_as323")
+
 [node name="Fireflow" type="Node2D"]
 script = ExtResource("1_ienvx")
 
-[node name="Smoke" type="GPUParticles2D" parent="."]
+[node name="SmokeDeprecated" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 visible = false
 amount = 80
 lifetime = 1.6
 process_material = SubResource("5")
+texture = ExtResource("1")
+
+[node name="Smoke" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+amount = 80
+lifetime = 5.0
+speed_scale = 4.0
+process_material = SubResource("ParticleProcessMaterial_l76g5")
 texture = ExtResource("1")
 
 [node name="Fire" type="GPUParticles2D" parent="."]
@@ -42,5 +74,5 @@ texture_filter = 1
 amount = 80
 lifetime = 3.0
 speed_scale = 4.0
-process_material = ExtResource("2")
+process_material = ExtResource("3_0mdpk")
 texture = ExtResource("1")

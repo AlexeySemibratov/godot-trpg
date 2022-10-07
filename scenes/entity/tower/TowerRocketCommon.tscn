@@ -12,6 +12,8 @@ rotation_speed_deg = 60
 active_range = 400
 range_area_node = NodePath("Area2D")
 turret_node = NodePath("TowerGun")
+icon_image_path = "res://resources/textures/towers/towerDefense_tile206.png"
+build_cost = 20
 
 [node name="TowerBase" type="Sprite2D" parent="."]
 position = Vector2(32, 32)

@@ -10,9 +10,9 @@ signal on_damage(amount)
 var particles
 
 @export var reloading_time = 5
-@export var overflow_time_limit = 100
-@export var damage_delay_time = 0.4
-@export var damage = 50
+@export var overheat_time_limit = 4
+@export var damage_delay_time = 0.3
+@export var damage = 8
 
 const RELOADING_TEXT = "%0.1f/%0.1f"
 const OVERHEAT_TEXT = "%d%%"
@@ -34,12 +34,12 @@ func _process(delta):
 	_render_state(state)
 	_update_particles(state)
 	if (state == State.FIRING):
-		if (overheat_sec >= overflow_time_limit):
+		if (overheat_sec >= overheat_time_limit):
 			_start_reloading()
 			
-		overheat_sec = clamp(overheat_sec + delta, 0, overflow_time_limit)
+		overheat_sec = clamp(overheat_sec + delta, 0, overheat_time_limit)
 	elif (state == State.IDLE):
-		overheat_sec = clamp(overheat_sec - delta, 0, overflow_time_limit)
+		overheat_sec = clamp(overheat_sec - delta, 0, overheat_time_limit)
 
 func fire():
 	if (state == State.RELOADING || !damage_delay_timer.is_stopped()):
@@ -71,7 +71,7 @@ func _render_state(state: State):
 	label.text = text 
 	
 func _get_overheat_percent():
-	return 100.0 * overheat_sec / overflow_time_limit
+	return 100.0 * overheat_sec / overheat_time_limit
 	
 func _update_particles(state: State):
 	if (particles == null):

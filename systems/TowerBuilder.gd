@@ -2,13 +2,14 @@ extends Node2D
 class_name TowerBuilder
 
 signal on_build_mode_enabled(tower_to_build)
+signal on_tower_builded(tower_id, cost)
 
 var map: TileMap
 var grid: TileMap
 var ui: CanvasLayer
 
 var build_mode_enabled = false
-var tower_to_build
+var selected_tower_scene
 var can_build_here = false
 var build_location
 var tile_v_at_build_location
@@ -22,6 +23,7 @@ const TILE_ID_BLOCK = 1
 
 const TILES_ID = 0
 const ATLAS_COORDS_BLOCK = Vector2i(1, 0)
+const ATLAS_COORDS_AVAILABLE = Vector2i(0, 0)
 
 const GRID_CELL_SIZE = 64
 
@@ -40,16 +42,16 @@ func _input(event):
 	if(event.is_action_pressed("ui_cancel")):
 		cancel_build_mode()
 	
-func setup_build_mode(tower):
+func setup_build_mode(tower_data):
 	if (build_mode_enabled):
 		cancel_build_mode()
 		
 	grid.visible = true
 		
-	var tower_node = tower["node"]
+	var tower_scene = tower_data[Towers.KEY_SCENE]
 	build_mode_enabled = true
-	tower_to_build = tower_node
-	ui.set_tower_preview(tower_node, get_global_mouse_position())
+	selected_tower_scene = tower_scene
+	ui.set_tower_preview(load(tower_scene).instantiate(), get_global_mouse_position())
 	
 func update_build_preview():
 	var mouse_pos = grid.get_global_mouse_position()
@@ -58,7 +60,7 @@ func update_build_preview():
 	var tile_pos = grid.map_to_local(tile)
 	var tile_atlas = grid.get_cell_atlas_coords(0, tile)
 	
-	can_build_here = tile_atlas != ATLAS_COORDS_BLOCK
+	can_build_here = tile_atlas == ATLAS_COORDS_AVAILABLE
 	build_location = tile_pos if (can_build_here) else null
 	
 	var preview_pos = shift_to_half_cell_size(get_viewport().get_mouse_position())
@@ -76,10 +78,12 @@ func cancel_build_mode():
 
 func build_if_can():
 	if (build_mode_enabled and can_build_here):
-		var tower = load(tower_to_build).instantiate()
-		map.add_child(tower, true)
-		tower.position = shift_to_half_cell_size(build_location)
-		var tile_coord = map.local_to_map(build_location)
-		grid.set_cell(0, tile_coord, TILES_ID, ATLAS_COORDS_BLOCK)
-		print("Set cell at " + str(tile_coord))
+		_place_tower(load(selected_tower_scene).instantiate())
+		emit_signal("on_tower_builder", )
 		cancel_build_mode()
+		
+func _place_tower(tower):
+	map.add_child(tower, true)
+	tower.position = shift_to_half_cell_size(build_location)
+	var tile_coord = map.local_to_map(build_location)
+	grid.set_cell(0, tile_coord, TILES_ID, ATLAS_COORDS_BLOCK)

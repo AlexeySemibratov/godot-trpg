@@ -12,6 +12,8 @@ rotation_speed_deg = 60
 active_range = 150
 range_area_node = NodePath("Area2d")
 turret_node = NodePath("Turret")
+icon_image_path = "res://resources/textures/towers/flamethrower_turret.png"
+build_cost = 25
 
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(1, 0)

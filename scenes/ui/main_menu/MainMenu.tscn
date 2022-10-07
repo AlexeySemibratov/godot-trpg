@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://duvsact26q13v"]
+
+[ext_resource type="Theme" uid="uid://vp1023g85ie6" path="res://resources/MainTheme.tres" id="1_b8013"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/MainMenu.gd" id="2_rxvy3"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1_b8013")
+script = ExtResource("2_rxvy3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MenuGroups" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 1004.0
+offset_bottom = 748.0
+
+[node name="Title" type="Label" parent="MarginContainer/MenuGroups"]
+custom_minimum_size = Vector2i(0, 200)
+layout_mode = 2
+offset_right = 984.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 80
+text = "Tower defense"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="MarginContainer/MenuGroups"]
+layout_mode = 2
+offset_top = 204.0
+offset_right = 984.0
+offset_bottom = 420.0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="MarginContainer/MenuGroups/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2i(300, 80)
+layout_mode = 2
+offset_left = 342.0
+offset_right = 642.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+theme = ExtResource("1_b8013")
+theme_override_font_sizes/font_size = 48
+text = "Play"
+
+[node name="BaseButton" type="Button" parent="MarginContainer/MenuGroups/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2i(300, 60)
+layout_mode = 2
+offset_left = 342.0
+offset_top = 88.0
+offset_right = 642.0
+offset_bottom = 148.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Base"
+
+[node name="SettignsButton" type="Button" parent="MarginContainer/MenuGroups/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2i(300, 60)
+layout_mode = 2
+offset_left = 342.0
+offset_top = 156.0
+offset_right = 642.0
+offset_bottom = 216.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Settings"
+
+[node name="Version" type="Label" parent="MarginContainer/MenuGroups"]
+layout_mode = 2
+offset_top = 708.0
+offset_right = 984.0
+offset_bottom = 728.0
+size_flags_vertical = 10
+text = "Alpha 0.0.1"
+vertical_alignment = 2
+
+[connection signal="pressed" from="MarginContainer/MenuGroups/ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
