@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgwunn1kwgfjl"]
+[gd_scene load_steps=10 format=3 uid="uid://cgwunn1kwgfjl"]
 
 [ext_resource type="TileSet" uid="uid://ccawbuc7gu4ce" path="res://scenes/maps/empty_tiles.tres" id="1"]
 [ext_resource type="TileSet" uid="uid://cy3tju0crpfa2" path="res://scenes/ground_tileset_v2.tres" id="2"]
 [ext_resource type="TileSet" uid="uid://cr5qfm4i52k65" path="res://scenes/maps/map1_tile_set.tres" id="2_p37xk"]
 [ext_resource type="TileSet" uid="uid://b7h0xx5g6a2ak" path="res://resources/textures/tiles/build_grid_tiles.tres" id="3"]
 [ext_resource type="Script" path="res://scenes/maps/GameMap.gd" id="4"]
+[ext_resource type="Script" path="res://scenes/maps/ConstructionsLayer.gd" id="5_27n6c"]
 [ext_resource type="Script" path="res://scenes/maps/Base.gd" id="6"]
 
 [sub_resource type="Curve2D" id="1"]
@@ -36,6 +37,7 @@ curve = SubResource("1")
 [node name="ConstructionsLayer" type="TileMap" parent="."]
 tile_set = ExtResource("1")
 format = 2
+script = ExtResource("5_27n6c")
 
 [node name="BuildingGrid" type="TileMap" parent="."]
 visible = false

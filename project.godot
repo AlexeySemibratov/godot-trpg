@@ -9,10 +9,20 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "TileMap",
+"class": &"ConstructionsLayer",
+"language": &"GDScript",
+"path": "res://scenes/maps/ConstructionsLayer.gd"
+}, {
 "base": "PathFollow2D",
 "class": &"EnemyBase",
 "language": &"GDScript",
 "path": "res://scenes/entity/enemy/base/EnemyBase.gd"
+}, {
+"base": "Node2D",
+"class": &"GameMap",
+"language": &"GDScript",
+"path": "res://scenes/maps/GameMap.gd"
 }, {
 "base": "Tower",
 "class": &"GunTurretTower",
@@ -23,6 +33,11 @@ _global_script_classes=[{
 "class": &"Projectile",
 "language": &"GDScript",
 "path": "res://scenes/entity/projectile/Projectile.gd"
+}, {
+"base": "MarginContainer",
+"class": &"ShopButton",
+"language": &"GDScript",
+"path": "res://scenes/ui/shop/ShopButton.gd"
 }, {
 "base": "Container",
 "class": &"SingleBulletComponent",
@@ -38,14 +53,23 @@ _global_script_classes=[{
 "class": &"TowerBuilder",
 "language": &"GDScript",
 "path": "res://systems/TowerBuilder.gd"
+}, {
+"base": "PanelContainer",
+"class": &"TowersShop",
+"language": &"GDScript",
+"path": "res://scenes/ui/shop/ShopItems.gd"
 }]
 _global_script_class_icons={
+"ConstructionsLayer": "",
 "EnemyBase": "",
+"GameMap": "",
 "GunTurretTower": "",
 "Projectile": "",
+"ShopButton": "",
 "SingleBulletComponent": "",
 "Tower": "",
-"TowerBuilder": ""
+"TowerBuilder": "",
+"TowersShop": ""
 }
 
 [application]
@@ -60,6 +84,7 @@ config/icon="res://icon.png"
 Towers="*res://scenes/singletons/Towers.gd"
 Collision="*res://scenes/singletons/Collision.gd"
 Groups="*res://scenes/singletons/Groups.gd"
+Events="*res://events/Events.gd"
 
 [display]
 

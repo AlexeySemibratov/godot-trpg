@@ -2,9 +2,10 @@ extends Node2D
 class_name TowerBuilder
 
 signal on_build_mode_enabled(tower_to_build)
-signal on_tower_builded(tower_id, cost)
+signal on_tower_builded(tower)
+signal on_tower_sold(tower)
 
-var map: TileMap
+var map: ConstructionsLayer
 var grid: TileMap
 var ui: CanvasLayer
 
@@ -27,7 +28,7 @@ const ATLAS_COORDS_AVAILABLE = Vector2i(0, 0)
 
 const GRID_CELL_SIZE = 64
 
-func setup(_map: TileMap, _grid: TileMap, _ui: CanvasLayer):
+func setup(_map: ConstructionsLayer, _grid: TileMap, _ui: CanvasLayer):
 	map = _map
 	grid = _grid
 	ui = _ui
@@ -82,8 +83,19 @@ func build_if_can():
 		emit_signal("on_tower_builder", )
 		cancel_build_mode()
 		
-func _place_tower(tower):
-	map.add_child(tower, true)
-	tower.position = shift_to_half_cell_size(build_location)
-	var tile_coord = map.local_to_map(build_location)
+func _place_tower(tower: Tower):
+	var coords = shift_to_half_cell_size(build_location)
+	tower.on_sold.connect(self._remove_tower)
+	map.place_tower(tower, coords)
+	emit_signal("on_tower_builded", tower)
+#	map.add_child(tower, true)
+#	tower.position = shift_to_half_cell_size(build_location)
+	var tile_coord = grid.local_to_map(build_location)
 	grid.set_cell(0, tile_coord, TILES_ID, ATLAS_COORDS_BLOCK)
+	
+func _remove_tower(tower: Tower):
+	map.remove_tower(tower)
+	var tile_coord = grid.local_to_map(tower.position)
+	grid.set_cell(0, tile_coord, TILES_ID, ATLAS_COORDS_AVAILABLE)
+	emit_signal("on_tower_sold", tower)
+	tower.queue_free()

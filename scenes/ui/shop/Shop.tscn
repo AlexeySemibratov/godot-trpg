@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt0086l3rjun6"]
+
+[ext_resource type="Theme" uid="uid://vp1023g85ie6" path="res://resources/MainTheme.tres" id="1_blbfq"]
+
+[sub_resource type="GDScript" id="GDScript_xc22d"]
+script/source = "extends Control
+class_name Shop
+
+var current_fuel: int = 100		
+
+const FUEL_TEXT = \"Fuel: %d\"
+
+@onready var fuel_label = %FuelLabel
+
+func has_enough_fuel(cost) -> bool:
+	return cost <= current_fuel
+
+func add_fuel(value):
+	current_fuel += value
+	_update_fuel_text()
+
+
+func decrease_fuel(value):
+	current_fuel -= value
+	_update_fuel_text()
+
+
+func _update_fuel_text():
+	fuel_label.text = FUEL_TEXT % current_fuel
+"
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_blbfq")
+script = SubResource("GDScript_xc22d")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 125.0
+offset_bottom = 56.0
+
+[node name="FuelLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+offset_right = 105.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 32
+text = "Fuel: 10"

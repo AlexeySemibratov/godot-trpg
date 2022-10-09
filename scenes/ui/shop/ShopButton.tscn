@@ -71,3 +71,12 @@ offset_bottom = 134.0
 theme_type_variation = &"HeaderLarge"
 text = "15"
 horizontal_alignment = 1
+
+[node name="OverlayRect" type="ColorRect" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 123.0
+offset_bottom = 139.0
+color = Color(0, 0, 0, 0.756863)
