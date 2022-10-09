@@ -88,8 +88,6 @@ func _place_tower(tower: Tower):
 	tower.on_sold.connect(self._remove_tower)
 	map.place_tower(tower, coords)
 	emit_signal("on_tower_builded", tower)
-#	map.add_child(tower, true)
-#	tower.position = shift_to_half_cell_size(build_location)
 	var tile_coord = grid.local_to_map(build_location)
 	grid.set_cell(0, tile_coord, TILES_ID, ATLAS_COORDS_BLOCK)
 	

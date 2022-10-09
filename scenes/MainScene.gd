@@ -38,7 +38,7 @@ func _setup_base_ui():
 func _setup_shop():
 	shop.add_towers(Towers.TOWERS_DICT)
 	shop.on_button_clicked.connect(tower_builder.setup_build_mode)
-	Events.on_enemy_destroyed.connect(self._on_enemy_destroyed)
+	Events.on_enemy_destroyed_by.connect(self._on_enemy_destroyed)
 	
 	
 func _on_tower_builded(tower: Tower):
@@ -49,7 +49,7 @@ func _on_tower_sold(tower: Tower):
 	shop.add_fuel(tower.sold_cost)
 
 
-func _on_enemy_destroyed(enemy: EnemyBase):
+func _on_enemy_destroyed(tower: Tower, enemy: EnemyBase):
 	shop.add_fuel(enemy.reward_fuel)
 	
 	

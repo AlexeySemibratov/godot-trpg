@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj8w8ocalkivm"]
+[gd_scene load_steps=5 format=3 uid="uid://dleidoddlsrv"]
 
-[ext_resource type="Texture2D" uid="uid://dtk17e4dt06rf" path="res://resources/textures/towers/towerDefense_tile180.png" id="1"]
-[ext_resource type="Script" path="res://scenes/entity/tower/TowerRocketCommon.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://c3d280u4ktmse" path="res://resources/textures/towers/towerDefense_tile206.png" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/entity/tower/shooting/SingleBulletComponent.tscn" id="4"]
+[ext_resource type="Script" path="res://scenes/entity/tower/rocket_tower/TowerRocketCommon.gd" id="1_vx5yc"]
+[ext_resource type="Texture2D" uid="uid://dtk17e4dt06rf" path="res://resources/textures/towers/towerDefense_tile180.png" id="2_fqreq"]
+[ext_resource type="Texture2D" uid="uid://c3d280u4ktmse" path="res://resources/textures/towers/towerDefense_tile206.png" id="3_lq1it"]
+[ext_resource type="PackedScene" path="res://scenes/entity/tower/shooting/SingleBulletComponent.tscn" id="4_feoor"]
 
 [node name="RocketTower" type="Node2D"]
-script = ExtResource("2")
+script = ExtResource("1_vx5yc")
 damage = 75
 rotation_speed_deg = 60
 active_range = 400
@@ -17,11 +17,11 @@ build_cost = 20
 
 [node name="TowerBase" type="Sprite2D" parent="."]
 position = Vector2(32, 32)
-texture = ExtResource("1")
+texture = ExtResource("2_fqreq")
 
 [node name="TowerGun" type="Sprite2D" parent="."]
 position = Vector2(32, 32)
-texture = ExtResource("3")
+texture = ExtResource("3_lq1it")
 
 [node name="Muzzle" type="Marker2D" parent="TowerGun"]
 position = Vector2(32, 0)
@@ -37,7 +37,7 @@ offset_top = -16.0
 offset_right = 64.0
 offset_bottom = 62.0
 
-[node name="SingleBulletComponent" parent="TowerGUI" instance=ExtResource("4")]
+[node name="SingleBulletComponent" parent="TowerGUI" instance=ExtResource("4_feoor")]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

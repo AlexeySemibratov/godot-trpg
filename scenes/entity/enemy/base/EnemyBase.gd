@@ -53,16 +53,22 @@ func get_map():
 
 func is_alive() -> bool:
 	return state != State.DESTROYED
-
-
-func take_damage(amount):
+		
+		
+func apply_damage_event(event: DamageEvent):
 	if (state == State.LIVING):
+		var amount = event.damage.base_amount
 		emit_signal("on_damage_taken", amount, max_hp)
+		Events.emit_signal("on_damage_event", event)
 		current_hp = max(0, current_hp - amount)
-		_maybe_dead()
+		
+		if (current_hp <= 0):
+			Events.emit_signal("on_enemy_destroyed_by", event.source, self)
+			on_destroyed()
+		
 		_update_hp_indicator()	
 	
-	
+
 func _maybe_dead():
 	if (current_hp <= 0):
 		on_destroyed()

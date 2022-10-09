@@ -14,6 +14,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/maps/ConstructionsLayer.gd"
 }, {
+"base": "Node",
+"class": &"Damage",
+"language": &"GDScript",
+"path": "res://scenes/damage/Damage.gd"
+}, {
+"base": "Node",
+"class": &"DamageEvent",
+"language": &"GDScript",
+"path": "res://scenes/damage/DamageEvent.gd"
+}, {
 "base": "PathFollow2D",
 "class": &"EnemyBase",
 "language": &"GDScript",
@@ -61,6 +71,8 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "ConstructionsLayer": "",
+"Damage": "",
+"DamageEvent": "",
 "EnemyBase": "",
 "GameMap": "",
 "GunTurretTower": "",

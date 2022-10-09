@@ -12,7 +12,7 @@ var particles
 @export var reloading_time = 5
 @export var overheat_time_limit = 4
 @export var damage_delay_time = 0.3
-@export var damage = 8
+@export var damage: = 8
 
 const RELOADING_TEXT = "%0.1f/%0.1f"
 const OVERHEAT_TEXT = "%d%%"

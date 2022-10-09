@@ -13,14 +13,17 @@ var cost = -1 :
 		cost = value
 		cost_label.text = str(value)	
 		
+		
 var enabled: bool = true:
 	set(value):
 		enabled = value
 		_update_enabled_state(value)
 		
+		
 func _update_enabled_state(enabled):
 	overlay_rect.visible = not enabled
 	set_process_input(enabled)
+
 
 func _gui_input(event):
 	if event is InputEventMouseButton:

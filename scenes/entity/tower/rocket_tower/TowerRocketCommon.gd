@@ -24,8 +24,16 @@ func _spawn_bullet(enemy: EnemyBase):
 	get_tree().root.add_child(bullet)
 
 func _on_bullet_hit_enemy(enemy: EnemyBase):
-	enemy.take_damage(damage)
+	var event = _create_damage_event()
+	enemy.apply_damage_event(event)
 
+func _create_damage_event() -> DamageEvent:
+	var damage = Damage.new()
+	damage.base_amount = 100
+	var event = DamageEvent.new()
+	event.damage = damage
+	event.source = self
+	return event
 
 func _on_SingleBulletComponent_on_reloading_finished():
 	ready_to_fire = true
