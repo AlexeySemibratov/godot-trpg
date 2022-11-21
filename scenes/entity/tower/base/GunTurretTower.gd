@@ -8,15 +8,18 @@ extends Tower
 
 @export var range_area_node: NodePath
 @export var turret_node: NodePath
+@export var selection_renderer_node: NodePath
 
 @onready var rotation_speed = deg_to_rad(rotation_speed_deg)
 
 @onready var range_area: Area2D = get_node(range_area_node)
 @onready var tower_turret: Node2D = get_node(turret_node)
 @onready var detector_ray: RayCast2D
+@onready var selection_renderer: Node2D = get_node(selection_renderer_node)
+
+var range_area_color: Color = Color.html("#7399FF33")
 
 var is_active = true
-
 
 var ready_to_fire = true
 
@@ -26,6 +29,7 @@ func _ready():
 	_setup_collision()
 	_setup_detector_ray()
 	_setup_range_area()
+	_setup_selection_renderer()
 	
 	
 func _setup_collision():
@@ -46,6 +50,10 @@ func _setup_detector_ray():
 	
 func _setup_range_area():
 	range_area.connect("body_exited",Callable(self,"_on_body_leave_area"))
+	
+
+func _setup_selection_renderer():
+	selection_renderer.setup(active_range, range_area_color)
 	
 	
 func _on_body_leave_area(body):
@@ -144,4 +152,4 @@ func _process_ai(delta):
 func _clear_target():
 	on_target_cleared(current_target_ref.get_ref())
 	current_target_ref = weakref(null)
-	
+

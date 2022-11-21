@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d38f66171kpas"]
+[gd_scene load_steps=7 format=3 uid="uid://d38f66171kpas"]
 
 [ext_resource type="Texture2D" uid="uid://dtk17e4dt06rf" path="res://resources/textures/towers/towerDefense_tile180.png" id="1_fyucn"]
 [ext_resource type="Script" path="res://scenes/entity/tower/flamethrower_tower/FlameTower.gd" id="1_sp1cy"]
 [ext_resource type="Texture2D" uid="uid://cvimygh8kul8b" path="res://resources/textures/towers/flamethrower_turret.png" id="2_d8odk"]
 [ext_resource type="PackedScene" uid="uid://ckvuklniifwxa" path="res://effects/fire/FireFlow.tscn" id="4_vkiqi"]
 [ext_resource type="Script" path="res://scenes/entity/tower/flamethrower_tower/FireComponent.gd" id="5_h2lg4"]
+[ext_resource type="PackedScene" uid="uid://byo73u0wq1xgm" path="res://scenes/entity/selection/SelectionRenderer.tscn" id="6_iwbd7"]
 
 [node name="FlameThrower" type="Node2D"]
 script = ExtResource("1_sp1cy")
@@ -12,6 +13,7 @@ rotation_speed_deg = 60
 active_range = 150
 range_area_node = NodePath("Area2d")
 turret_node = NodePath("Turret")
+selection_renderer_node = NodePath("SelectionRenderer")
 icon_image_path = "res://resources/textures/towers/flamethrower_turret.png"
 build_cost = 25
 
@@ -51,6 +53,7 @@ collision_mask = 3
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("5_h2lg4")
 
 [node name="DamageDelayTimer" type="Timer" parent="FireComponent"]
@@ -72,6 +75,10 @@ offset_left = 13.0
 offset_top = -23.0
 offset_right = 53.0
 text = "100%"
+
+[node name="SelectionRenderer" parent="." instance=ExtResource("6_iwbd7")]
+unique_name_in_owner = true
+position = Vector2(32, 32)
 
 [connection signal="timeout" from="FireComponent/DamageDelayTimer" to="FireComponent" method="_on_damage_delay_timer_timeout"]
 [connection signal="timeout" from="FireComponent/ReloadingTimer" to="FireComponent" method="_on_reloading_timer_timeout"]

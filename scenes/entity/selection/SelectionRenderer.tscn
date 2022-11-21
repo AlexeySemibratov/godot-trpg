@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://byo73u0wq1xgm"]
+
+[ext_resource type="Script" path="res://scenes/entity/selection/SelectionRenderer.gd" id="1_gkq7t"]
+[ext_resource type="Script" path="res://scenes/entity/selection/SelectionCanvas.gd" id="2_o88po"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5je0"]
+size = Vector2(64, 64)
+
+[node name="SelectionRenderer" type="Node2D"]
+script = ExtResource("1_gkq7t")
+
+[node name="SelectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="SelectionArea"]
+shape = SubResource("RectangleShape2D_c5je0")
+
+[node name="SelectionCanvas" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_o88po")
+
+[connection signal="mouse_entered" from="SelectionArea" to="." method="_on_selection_area_mouse_entered"]
+[connection signal="mouse_exited" from="SelectionArea" to="." method="_on_selection_area_mouse_exited"]

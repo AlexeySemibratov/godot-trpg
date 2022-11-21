@@ -1,17 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://baqqko63liodh"]
+[gd_scene load_steps=7 format=3 uid="uid://baqqko63liodh"]
 
 [ext_resource type="Script" path="res://scenes/entity/tower/common_tower/TowerGunCommon.gd" id="1_rh1x3"]
 [ext_resource type="Texture2D" uid="uid://dtk17e4dt06rf" path="res://resources/textures/towers/towerDefense_tile180.png" id="2_6nmyq"]
 [ext_resource type="Texture2D" uid="uid://d4dhw074l0hty" path="res://resources/textures/towers/towerDefense_tile249.png" id="3_djcew"]
 [ext_resource type="PackedScene" path="res://scenes/entity/tower/shooting/SingleBulletComponent.tscn" id="4_k6yll"]
 [ext_resource type="PackedScene" uid="uid://dib2vexou0mhx" path="res://scenes/entity/tower/shooting/AutoloaderBulletComponent.tscn" id="5_2njxk"]
+[ext_resource type="PackedScene" uid="uid://byo73u0wq1xgm" path="res://scenes/entity/selection/SelectionRenderer.tscn" id="6_3lfjc"]
 
 [node name="TowerGunCommon" type="Node2D"]
 script = ExtResource("1_rh1x3")
 rotation_speed_deg = 180
 active_range = 200
+range_area_color = null
 range_area_node = NodePath("Area2D")
 turret_node = NodePath("TowerGun")
+selection_renderer_node = NodePath("SelectionRenderer")
 icon_image_path = "res://resources/textures/towers/towerDefense_tile249.png"
 build_cost = 10
 
@@ -37,6 +40,7 @@ anchors_preset = 0
 offset_top = -16.0
 offset_right = 64.0
 offset_bottom = 62.0
+mouse_filter = 1
 
 [node name="SingleBulletComponent" parent="TowerGUI" instance=ExtResource("4_k6yll")]
 anchors_preset = 5
@@ -51,4 +55,5 @@ anchor_right = 0.5
 drum_reloading_time = 5
 drum_shift_time = 1.0
 
-[connection signal="on_reloading_finished" from="TowerGUI/SingleBulletComponent" to="." method="_on_SingleBulletComponent_on_reloading_finished"]
+[node name="SelectionRenderer" parent="." instance=ExtResource("6_3lfjc")]
+position = Vector2(32, 32)
