@@ -1,6 +1,7 @@
 extends EnemyBase
 
 var explosion = preload("res://effects/explosion/Explosion.tscn")
+
 @onready var destroy_animation: AnimationPlayer = $BodyArea/Body/AnimationPlayer
 
 func on_destroyed():
@@ -8,11 +9,13 @@ func on_destroyed():
 	_play_destroy_animation()
 	_spawn_explosion_particles()
 	
+	
 func _spawn_explosion_particles():
 	var particles = explosion.instantiate()
 	get_tree().root.add_child(particles)
 	particles.global_position = global_position
 	particles.emit()
+	
 	
 func _play_destroy_animation():
 	destroy_animation.play("destruction_1")

@@ -93,7 +93,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Towers="*res://scenes/singletons/Towers.gd"
+Towers="*res://scenes/Towers.gd"
 Collision="*res://scenes/singletons/Collision.gd"
 Groups="*res://scenes/singletons/Groups.gd"
 Events="*res://events/Events.gd"

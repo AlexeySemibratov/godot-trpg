@@ -1,5 +1,5 @@
-extends PanelContainer
 class_name TowersShop
+extends PanelContainer
 
 signal on_button_clicked(tower_data)
 

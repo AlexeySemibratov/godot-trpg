@@ -16,15 +16,18 @@ func _ready():
 	timer.wait_time = reloading_time
 	timer.connect("timeout",Callable(self,"_on_timeout"))
 	
+	
 func _process(delta):
 	if (!timer.is_stopped()):
 		var time_left = timer.time_left
 		label.text = TEXT_FORMAT % [time_left]
 		emit_signal("on_reloading_time_changed", time_left, reloading_time)
 	
+	
 func on_shot():
 	label.visible = true
 	timer.start()
+	
 	
 func _on_timeout():
 	label.visible = false

@@ -3,6 +3,13 @@ class_name GameMap
 
 @export var base_hp = 10
 
+const WAVE_DELAY = 10
+
+var current_wave = -1
+var waves_count = [5, 6, 8]
+
+var enemy_scene = preload("res://scenes/entity/enemy/specials/light/LightTank.tscn")
+
 @onready var path: Path2D = $Path2D
 @onready var ground = $GroundLevel
 @onready var road = $RoadLevel
@@ -11,12 +18,7 @@ class_name GameMap
 @onready var base = $BaseArea
 
 @onready var wave_delay = $WaveDelayTimer
-const WAVE_DELAY = 10
 
-var current_wave = -1
-var waves_count = [5, 6, 8]
-
-var enemy_scene = preload("res://scenes/entity/enemy/specials/light/LightTank.tscn")
 
 func _init():
 	add_to_group(Groups.GAME_MAP)

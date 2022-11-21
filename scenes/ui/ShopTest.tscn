@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bp0ku57mse3dc"]
+[gd_scene load_steps=2 format=3 uid="uid://u7ep4aheas01"]
 
 [ext_resource type="PackedScene" uid="uid://sfm6ptf5mun" path="res://scenes/ui/shop/ShopButton.tscn" id="1"]
 

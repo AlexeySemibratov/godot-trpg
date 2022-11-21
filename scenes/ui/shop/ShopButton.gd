@@ -3,11 +3,6 @@ class_name ShopButton
 
 signal on_card_pressed
 
-@onready var button = $MarginContainer/VBoxContainer/BuildTowerButton
-@onready var tower_texture_button = $MarginContainer/VBoxContainer/BuildTowerButton/BuildButton
-@onready var cost_label = %Cost
-@onready var overlay_rect = %OverlayRect
-
 var cost = -1 :
 	set(value):
 		cost = value
@@ -18,6 +13,11 @@ var enabled: bool = true:
 	set(value):
 		enabled = value
 		_update_enabled_state(value)
+
+@onready var button = $MarginContainer/VBoxContainer/BuildTowerButton
+@onready var tower_texture_button = $MarginContainer/VBoxContainer/BuildTowerButton/BuildButton
+@onready var cost_label = %Cost
+@onready var overlay_rect = %OverlayRect
 		
 		
 func _update_enabled_state(enabled):

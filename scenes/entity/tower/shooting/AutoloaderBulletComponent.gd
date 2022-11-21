@@ -27,6 +27,7 @@ func _ready():
 	timer.connect("timeout",Callable(self,"_on_timeout"))
 	current_drum_size = drum_size
 
+
 func _process(delta):
 	if (timer.is_stopped()):
 		return
@@ -46,6 +47,7 @@ func on_shot():
 		_start_drum_reloading()
 	elif (current_drum_size > 1):
 		_start_drum_shifting()
+	
 		
 func _start_drum_reloading():
 	current_drum_size = current_drum_size - 1
@@ -53,6 +55,7 @@ func _start_drum_reloading():
 	current_reloading_state = ReloadingState.DRUM
 	timer.wait_time = drum_reloading_time
 	timer.start()
+
 	
 func _start_drum_shifting():
 	current_drum_size = current_drum_size - 1
@@ -60,9 +63,11 @@ func _start_drum_shifting():
 	current_reloading_state = ReloadingState.SINGLE
 	timer.wait_time = drum_shift_time
 	timer.start()
+	
 		
 func _update_drum_status(current_size):
 	drum_label.text = DRUM_STATUS_TEXT % [current_drum_size, drum_size]
+	
 	
 func _on_timeout():
 	reloading_label.visible = false

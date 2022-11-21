@@ -1,12 +1,11 @@
-extends PathFollow2D
 class_name EnemyBase
+extends PathFollow2D
 
 signal on_dead
 signal on_damage_taken(amount, max_hp)
 
 @export var max_hp = 100
-@export var armor = 0
-@export var speed = 200
+@export var speed = 100
 
 @export var reward_fuel: int = 0
 
@@ -67,11 +66,6 @@ func apply_damage_event(event: DamageEvent):
 			on_destroyed()
 		
 		_update_hp_indicator()	
-	
-
-func _maybe_dead():
-	if (current_hp <= 0):
-		on_destroyed()
 	
 		
 func _update_hp_indicator():

@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://ic5g8vnhomii"]
 
-[ext_resource path="res://resources/textures/ui/indicators/BarV1_ProgressBarBorder.png" type="Texture2D" id=1]
-[ext_resource path="res://resources/textures/ui/indicators/BarV1_Bar.png" type="Texture2D" id=2]
-[ext_resource path="res://resources/textures/ui/indicators/BarV1_ProgressBar.png" type="Texture2D" id=3]
-[ext_resource path="res://scenes/ui/indicators/HPIndicator.gd" type="Script" id=4]
+[ext_resource type="Texture2D" uid="uid://bmut1s4h0vwrt" path="res://resources/textures/ui/indicators/BarV1_ProgressBarBorder.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://djs6x7xxgiubc" path="res://resources/textures/ui/indicators/BarV1_Bar.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cyad4rqfmmouu" path="res://resources/textures/ui/indicators/BarV1_ProgressBar.png" id="3"]
+[ext_resource type="Script" path="res://scenes/ui/indicators/HPIndicator.gd" id="4"]
 
 [node name="Indicator" type="TextureProgressBar"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -752.0
 offset_bottom = -747.0
-texture_under = ExtResource( 2 )
-texture_over = ExtResource( 1 )
-texture_progress = ExtResource( 3 )
-script = ExtResource( 4 )
+texture_under = ExtResource("2")
+texture_over = ExtResource("1")
+texture_progress = ExtResource("3")
+script = ExtResource("4")

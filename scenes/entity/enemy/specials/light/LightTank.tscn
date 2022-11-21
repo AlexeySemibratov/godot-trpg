@@ -9,7 +9,7 @@ size = Vector2(59, 47)
 
 [node name="Node2D" instance=ExtResource("2")]
 script = ExtResource("3")
-speed = 100
+speed = 75
 reward_fuel = 5
 
 [node name="Body" parent="BodyArea" index="0" instance=ExtResource("1")]
@@ -17,3 +17,9 @@ reward_fuel = 5
 [node name="CollisionShape2D" parent="BodyArea" index="1"]
 position = Vector2(-2.5, -0.5)
 shape = SubResource("1")
+
+[node name="Indicator" parent="UI" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 272.0
+offset_bottom = 21.0

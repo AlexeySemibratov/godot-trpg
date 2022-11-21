@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://d38f66171kpas"]
 
 [ext_resource type="Texture2D" uid="uid://dtk17e4dt06rf" path="res://resources/textures/towers/towerDefense_tile180.png" id="1_fyucn"]
 [ext_resource type="Script" path="res://scenes/entity/tower/flamethrower_tower/FlameTower.gd" id="1_sp1cy"]

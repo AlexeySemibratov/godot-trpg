@@ -7,9 +7,8 @@
 
 [node name="RocketTower" type="Node2D"]
 script = ExtResource("1_vx5yc")
-damage = 75
 rotation_speed_deg = 60
-active_range = 400
+active_range = 1000
 range_area_node = NodePath("Area2D")
 turret_node = NodePath("TowerGun")
 icon_image_path = "res://resources/textures/towers/towerDefense_tile206.png"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4urld417iwmw"]
 
 [ext_resource type="Script" path="res://scenes/entity/enemy/base/EnemyBase.gd" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/ui/indicators/HPIndicator.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ic5g8vnhomii" path="res://scenes/ui/indicators/HPIndicator.tscn" id="2"]
 [ext_resource type="Script" path="res://scenes/entity/enemy/base/UI.gd" id="3"]
 
 [node name="Node2D" type="PathFollow2D"]
@@ -19,12 +19,15 @@ collision_layer = 2
 script = ExtResource("3")
 
 [node name="Indicator" parent="UI" instance=ExtResource("2")]
+anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = -48.0
 offset_top = -50.0
 offset_right = 224.0
 offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.35, 0.35)
 script = null
 
