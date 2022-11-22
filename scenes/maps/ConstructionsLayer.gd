@@ -4,7 +4,7 @@ class_name ConstructionsLayer
 var _constructions_dict: Dictionary = {}
 
 func place_tower(tower: Tower, pos: Vector2):
-	_constructions_dict[tower] = pos
+	_constructions_dict[pos] = tower
 	tower.position = pos
 	add_child(tower)
 

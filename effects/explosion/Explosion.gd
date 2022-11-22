@@ -5,7 +5,7 @@ extends Node2D
 
 @onready var lifetime = smoke.lifetime + 1
 	
-func emit():
+func emit_once():
 	timer.wait_time = lifetime
 	timer.connect("timeout",Callable(self,"queue_free"))
 	timer.start()

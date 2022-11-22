@@ -11,7 +11,6 @@
 script = ExtResource("1_rh1x3")
 rotation_speed_deg = 180
 active_range = 200
-range_area_color = null
 range_area_node = NodePath("Area2D")
 turret_node = NodePath("TowerGun")
 selection_renderer_node = NodePath("SelectionRenderer")

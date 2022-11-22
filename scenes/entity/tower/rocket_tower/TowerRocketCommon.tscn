@@ -41,7 +41,6 @@ offset_bottom = 62.0
 mouse_filter = 2
 
 [node name="SingleBulletComponent" parent="TowerGUI" instance=ExtResource("4_feoor")]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

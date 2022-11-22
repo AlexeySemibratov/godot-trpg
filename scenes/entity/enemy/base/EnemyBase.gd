@@ -44,10 +44,6 @@ func on_destroyed():
 	emit_signal("on_dead")
 	Events.emit_signal("on_enemy_destroyed", self)
 	despawn_timer.start()
-	
-	
-func get_map():
-	return get_tree().get_nodes_in_group(Groups.GAME_MAP).front()
 
 
 func is_alive() -> bool:
