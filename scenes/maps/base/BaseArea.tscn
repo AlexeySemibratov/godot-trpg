@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddefr32r5e1uw"]
+
+[ext_resource type="Script" path="res://scenes/maps/base/Base.gd" id="1_qt7eq"]
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(51, 46)
+
+[node name="BaseArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_qt7eq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1080.5, 432)
+shape = SubResource("2")

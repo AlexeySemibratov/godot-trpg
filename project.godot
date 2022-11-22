@@ -9,10 +9,15 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Area2D",
+"class": &"BaseArea",
+"language": &"GDScript",
+"path": "res://scenes/maps/base/Base.gd"
+}, {
 "base": "TileMap",
 "class": &"ConstructionsLayer",
 "language": &"GDScript",
-"path": "res://scenes/maps/ConstructionsLayer.gd"
+"path": "res://scenes/maps/game_map/ConstructionsLayer.gd"
 }, {
 "base": "Node",
 "class": &"Damage",
@@ -30,14 +35,24 @@ _global_script_classes=[{
 "path": "res://scenes/entity/enemy/base/EnemyBase.gd"
 }, {
 "base": "Node2D",
+"class": &"EnemyWaveSpawner",
+"language": &"GDScript",
+"path": "res://scenes/maps/enemy_waves/EnemyWavesSpawner.gd"
+}, {
+"base": "Node2D",
 "class": &"GameMap",
 "language": &"GDScript",
-"path": "res://scenes/maps/GameMap.gd"
+"path": "res://scenes/maps/game_map/GameMap.gd"
 }, {
 "base": "Tower",
 "class": &"GunTurretTower",
 "language": &"GDScript",
 "path": "res://scenes/entity/tower/base/GunTurretTower.gd"
+}, {
+"base": "TextureProgressBar",
+"class": &"HPIndicator",
+"language": &"GDScript",
+"path": "res://scenes/ui/indicators/HPIndicator.gd"
 }, {
 "base": "Area2D",
 "class": &"Projectile",
@@ -70,12 +85,15 @@ _global_script_classes=[{
 "path": "res://scenes/ui/shop/ShopItems.gd"
 }]
 _global_script_class_icons={
+"BaseArea": "",
 "ConstructionsLayer": "",
 "Damage": "",
 "DamageEvent": "",
 "EnemyBase": "",
+"EnemyWaveSpawner": "",
 "GameMap": "",
 "GunTurretTower": "",
+"HPIndicator": "",
 "Projectile": "",
 "ShopButton": "",
 "SingleBulletComponent": "",

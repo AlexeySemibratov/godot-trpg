@@ -9,8 +9,8 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -752.0
-offset_bottom = -747.0
+offset_right = 232.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -18,3 +18,10 @@ texture_under = ExtResource("2")
 texture_over = ExtResource("1")
 texture_progress = ExtResource("3")
 script = ExtResource("4")
+
+[node name="VisibilityTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="VisibilityTimer" to="." method="_on_visibility_timer_timeout"]

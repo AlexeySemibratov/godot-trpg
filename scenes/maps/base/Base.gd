@@ -1,3 +1,4 @@
+class_name BaseArea
 extends Area2D
 
 signal on_base_hp_changed(new_value)

@@ -9,8 +9,7 @@ signal on_damage_taken(amount, max_hp)
 
 @export var reward_fuel: int = 0
 
-@onready var hp_indicator = $UI/Indicator
-@onready var hp_indicator_timer = $IndicatorVisibilityTimer
+@onready var hp_indicator: HPIndicator = $UI/Indicator
 
 @onready var despawn_timer: Timer = %DespawnTimer
 
@@ -24,10 +23,8 @@ enum State {
 var state = State.LIVING
 
 func _ready():
-	hp_indicator.show()
-	hp_indicator.visible = true
-	hp_indicator.max_value = max_hp
-	hp_indicator.value = current_hp
+	hp_indicator.visible = false
+	hp_indicator.setup(max_hp, current_hp)
 	
 
 func _process(delta):
@@ -65,9 +62,7 @@ func apply_damage_event(event: DamageEvent):
 	
 		
 func _update_hp_indicator():
-	hp_indicator_timer.start()
-	hp_indicator.visible = true
-	hp_indicator.value = current_hp
+	hp_indicator.update(current_hp)
 
 
 func _on_IndicatorVisibilityTimer_timeout():

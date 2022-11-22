@@ -12,7 +12,6 @@ func on_destroyed():
 	
 func _spawn_explosion_particles():
 	var particles = explosion.instantiate()
-	# get_tree().root.add_child(particles)
 	add_child(particles)
 	particles.global_position = global_position
 	particles.emit_once()

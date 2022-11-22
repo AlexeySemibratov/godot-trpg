@@ -19,17 +19,11 @@ collision_layer = 2
 script = ExtResource("3")
 
 [node name="Indicator" parent="UI" instance=ExtResource("2")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -48.0
-offset_top = -50.0
-offset_right = 224.0
-offset_bottom = -29.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(0.35, 0.35)
-script = null
+offset_left = -55.0
+offset_top = -75.0
+offset_right = 217.0
+offset_bottom = -54.0
+scale = Vector2(0.4, 0.4)
 
 [node name="DespawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true

@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0c8p8dyl3bsn"]
+[gd_scene load_steps=5 format=3 uid="uid://cviou2r11emk8"]
 
 [ext_resource type="Script" path="res://scenes/UILayer.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dxm1h6o86k05p" path="res://scenes/ui/IngameUi.tscn" id="4"]
 [ext_resource type="Script" path="res://scenes/MainScene.gd" id="5"]
-[ext_resource type="PackedScene" uid="uid://cgwunn1kwgfjl" path="res://scenes/maps/GameMap.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://dpo6b3pi2ix02" path="res://scenes/maps/game_map/GameMap.tscn" id="6"]
 
 [node name="MainScene" type="Node2D"]
 position = Vector2(1, 0)

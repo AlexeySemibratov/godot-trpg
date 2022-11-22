@@ -1,16 +1,10 @@
 extends Node2D
 
-@onready var map = $GameMap
+@onready var map: GameMap = $GameMap
 @onready var shop: TowersShop = $Camera2d/UILayer/IngameUi/ShopList
 @onready var ui = %UILayer
 @onready var base_ui = $Camera2d/UILayer/IngameUi/Base
 
-var build_mode_enabled = false
-var tower_to_build
-var can_build_here = false
-var build_location
-var tile_v_at_build_location
-var build_type
 
 const BASE_HP = 10
 

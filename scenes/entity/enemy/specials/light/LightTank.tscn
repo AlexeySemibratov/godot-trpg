@@ -19,5 +19,5 @@ position = Vector2(-2.5, -0.5)
 shape = SubResource("1")
 
 [node name="Indicator" parent="UI" index="0"]
-offset_top = -40.0
-offset_bottom = -19.0
+offset_top = -53.0
+offset_bottom = -32.0
