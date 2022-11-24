@@ -10,6 +10,10 @@ var current_wave: int = -1
 var enemies_left = 0
 
 var enemy_scene = preload("res://scenes/entity/enemy/specials/light/LightTank.tscn")
+var enemies = [
+	preload("res://scenes/entity/enemy/specials/light/LightTank.tscn"),
+	preload("res://scenes/entity/enemy/specials/heavy/HeavyTank.tscn")
+]
 
 @onready var waves_delay_timer: Timer = %WavesDelayTimer
 
@@ -37,7 +41,9 @@ func _spawn_wave(enemies_in_wave: int):
 			
 			
 func _spawn_enemy():
-	var enemy: EnemyBase = enemy_scene.instantiate()
+	var index = randi_range(0, enemies.size() - 1)
+	var rand_enemy_scene = enemies[index]
+	var enemy: EnemyBase = rand_enemy_scene.instantiate()
 	enemy.tree_exited.connect(self._on_enemy_exit_tree)
 	emit_signal("on_enemy_spawned", enemy)
 

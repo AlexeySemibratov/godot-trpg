@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://bu80lt7iwjuvs"]
 
-[ext_resource type="Texture2D" uid="uid://gfhpi38ufyov" path="res://resources/textures/enemies/special_tank_2_body.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://k8xmtmaw72j0" path="res://resources/textures/enemies/special_tank_2_head.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://cs4owx3mjmdwp" path="res://resources/textures/enemies/tracks_small_0.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://b7ig1rqhpt8jp" path="res://resources/textures/enemies/tracks_small_1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cs4owx3mjmdwp" path="res://resources/textures/enemies/tracks_small_0.png" id="1_4mngc"]
+[ext_resource type="Texture2D" uid="uid://b7ig1rqhpt8jp" path="res://resources/textures/enemies/tracks_small_1.png" id="2_71k2e"]
+[ext_resource type="Texture2D" uid="uid://gfhpi38ufyov" path="res://resources/textures/enemies/special_tank_2_body.png" id="3_lflj5"]
+[ext_resource type="Texture2D" uid="uid://k8xmtmaw72j0" path="res://resources/textures/enemies/special_tank_2_head.png" id="4_78fcu"]
 
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
-"frames": [ExtResource("3"), ExtResource("4")],
+"frames": [ExtResource("1_4mngc"), ExtResource("2_71k2e")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -79,12 +79,12 @@ playing = true
 
 [node name="Body" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("1")
+texture = ExtResource("3_lflj5")
 
 [node name="Tower" type="Sprite2D" parent="."]
 position = Vector2(-8, 0)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2")
+texture = ExtResource("4_78fcu")
 offset = Vector2(32, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

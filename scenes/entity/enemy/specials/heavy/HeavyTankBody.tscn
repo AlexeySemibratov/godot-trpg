@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://by1m781jbg15l"]
+
+[ext_resource type="Texture2D" uid="uid://dcl1r1uno7tds" path="res://resources/textures/enemies/tracks_big_0.png" id="1_tfsp1"]
+[ext_resource type="Texture2D" uid="uid://dxiqglyd3a78a" path="res://resources/textures/enemies/tracks_big_1.png" id="2_4c2ev"]
+[ext_resource type="Texture2D" uid="uid://bo71xj7ts6o65" path="res://resources/textures/enemies/special_tank_1_body.png" id="2_74j0o"]
+[ext_resource type="Texture2D" uid="uid://bhy3haeqypjcs" path="res://resources/textures/enemies/special_tank_0_head.png" id="3_v5jn4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bxwv3"]
+animations = [{
+"frames": [ExtResource("1_tfsp1"), ExtResource("2_4c2ev")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HeavyTankBody" type="Node2D"]
+
+[node name="Tracks" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+frames = SubResource("SpriteFrames_bxwv3")
+playing = true
+
+[node name="Body" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_74j0o")
+
+[node name="Tower" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_v5jn4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

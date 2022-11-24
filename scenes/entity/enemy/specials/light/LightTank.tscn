@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bunyn0rc4y227"]
+[gd_scene load_steps=5 format=3 uid="uid://cmcu18my8vp8p"]
 
-[ext_resource type="PackedScene" uid="uid://bu80lt7iwjuvs" path="res://scenes/entity/enemy/specials/light/Body.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bu80lt7iwjuvs" path="res://scenes/entity/enemy/specials/light/LightTankBody.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c4urld417iwmw" path="res://scenes/entity/enemy/base/EnemyBase.tscn" id="2"]
 [ext_resource type="Script" path="res://scenes/entity/enemy/specials/light/LightTank.gd" id="3"]
 
