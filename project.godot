@@ -34,6 +34,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/entity/enemy/base/EnemyBase.gd"
 }, {
+"base": "RefCounted",
+"class": &"EnemyWave",
+"language": &"GDScript",
+"path": "res://scenes/maps/enemy_waves/EnemyWave.gd"
+}, {
 "base": "Node2D",
 "class": &"EnemyWaveSpawner",
 "language": &"GDScript",
@@ -90,6 +95,7 @@ _global_script_class_icons={
 "Damage": "",
 "DamageEvent": "",
 "EnemyBase": "",
+"EnemyWave": "",
 "EnemyWaveSpawner": "",
 "GameMap": "",
 "GunTurretTower": "",
@@ -115,6 +121,7 @@ Towers="*res://scenes/Towers.gd"
 Collision="*res://scenes/singletons/Collision.gd"
 Groups="*res://scenes/singletons/Groups.gd"
 Events="*res://events/Events.gd"
+Entities="*res://data/Entities.gd"
 
 [display]
 
