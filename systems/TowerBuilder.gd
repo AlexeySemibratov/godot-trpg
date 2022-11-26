@@ -46,13 +46,12 @@ func _input(event):
 		cancel_build_mode()
 	
 	
-func setup_build_mode(tower_data):
+func setup_build_mode(tower_scene):
 	if (build_mode_enabled):
 		cancel_build_mode()
 		
 	grid.visible = true
 		
-	var tower_scene = tower_data[Towers.KEY_SCENE]
 	build_mode_enabled = true
 	selected_tower_scene = tower_scene
 	ui.set_tower_preview(load(tower_scene).instantiate(), get_global_mouse_position())

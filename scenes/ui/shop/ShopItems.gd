@@ -1,7 +1,7 @@
 class_name TowersShop
 extends PanelContainer
 
-signal on_button_clicked(tower_data)
+signal on_button_clicked(tower_scene)
 
 var button_scene = load("res://scenes/ui/shop/ShopButton.tscn")
 
@@ -15,8 +15,10 @@ const FUEL_TEXT = "Fuel: %d"
 func _ready():
 	_update_fuel_text()
 
+
 func has_enough_fuel(cost) -> bool:
 	return cost <= current_fuel
+
 
 func add_fuel(value):
 	current_fuel += value
@@ -42,12 +44,12 @@ func _update_buttons():
 
 
 func add_towers(towers: Dictionary):
-	for tower_data in towers.values():
+	for tower_scene in towers.values():
 		var button: ShopButton = button_scene.instantiate()
-		var tower_obj = load(tower_data[Towers.KEY_SCENE]).instantiate()
+		var tower_obj = load(tower_scene).instantiate()
 		towers_container.add_child(button)
 		button.cost = tower_obj.build_cost
-		button.connect("on_card_pressed",Callable(self,"_on_button_clicked").bind(tower_data))
+		button.connect("on_card_pressed",Callable(self,"_on_button_clicked").bind(tower_scene))
 		_set_tower_texture(button.tower_texture_button, tower_obj.icon_image_path)
 		tower_obj.queue_free()
 

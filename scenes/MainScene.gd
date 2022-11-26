@@ -39,7 +39,7 @@ func _setup_base_ui():
 	
 	
 func _setup_shop():
-	shop.add_towers(Towers.TOWERS_DICT)
+	shop.add_towers(Entities.towers.get_all())
 	shop.on_button_clicked.connect(tower_builder.setup_build_mode)
 	Events.on_enemy_destroyed_by.connect(self._on_enemy_destroyed)
 	
