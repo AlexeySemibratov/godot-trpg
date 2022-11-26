@@ -2,10 +2,10 @@ class_name GameMap
 extends Node2D
 
 @export var base_hp = 10
+@export var enemy_path_node: NodePath
 
-@onready var path: Path2D = $Path2D
+@onready var enemy_path: Path2D = get_node(enemy_path_node)
 @onready var ground = $GroundLevel
-@onready var road = $RoadLevel
 @onready var constructions = $ConstructionsLayer
 @onready var building_grid = $BuildingGrid
 @onready var base = $BaseArea
@@ -22,7 +22,7 @@ func _setup_base_area():
 	
 	
 func _setup_enemy_waves_spawner():
-	enemy_waves_spawner.on_enemy_spawned.connect(path.add_child)
+	enemy_waves_spawner.on_enemy_spawned.connect(enemy_path.add_child)
 	enemy_waves_spawner.start()
 	
 		

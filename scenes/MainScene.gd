@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var map: GameMap = $GameMap
+var map: GameMap
+
 @onready var shop: TowersShop = $Camera2d/UILayer/IngameUi/ShopList
 @onready var ui = %UILayer
 @onready var base_ui = $Camera2d/UILayer/IngameUi/Base
@@ -11,9 +12,17 @@ const BASE_HP = 10
 var tower_builder: TowerBuilder
 
 func _ready():
+	_setup_map_level()
 	_setup_base_ui()
 	_setup_tower_bulder()
 	_setup_shop()
+	
+	
+func _setup_map_level():
+	var map_scene = load("res://scenes/maps/levels/MapLevel1.tscn")
+	var map_instance = map_scene.instantiate()
+	map = map_instance
+	add_child(map)
 	
 	
 func _setup_tower_bulder():
