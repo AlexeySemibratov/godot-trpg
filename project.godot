@@ -9,6 +9,11 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Control",
+"class": &"AlertDialog",
+"language": &"GDScript",
+"path": "res://scenes/ui/dialog/AlertDialog.gd"
+}, {
 "base": "Area2D",
 "class": &"BaseArea",
 "language": &"GDScript",
@@ -90,6 +95,7 @@ _global_script_classes=[{
 "path": "res://scenes/ui/shop/ShopItems.gd"
 }]
 _global_script_class_icons={
+"AlertDialog": "",
 "BaseArea": "",
 "ConstructionsLayer": "",
 "Damage": "",

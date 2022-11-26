@@ -68,7 +68,7 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 36
 text = "Base"
 
-[node name="SettignsButton" type="Button" parent="MarginContainer/MenuGroups/ButtonsContainer"]
+[node name="SettingsButton" type="Button" parent="MarginContainer/MenuGroups/ButtonsContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2i(300, 60)
 offset_left = 342.0
@@ -88,3 +88,5 @@ text = "Alpha 0.0.1"
 vertical_alignment = 2
 
 [connection signal="pressed" from="MarginContainer/MenuGroups/ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuGroups/ButtonsContainer/BaseButton" to="." method="_on_base_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuGroups/ButtonsContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

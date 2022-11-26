@@ -33,15 +33,18 @@ func setup(_map: ConstructionsLayer, _grid: TileMap, _ui: CanvasLayer):
 	grid = _grid
 	ui = _ui
 
+
 func _process(delta):
 	if (build_mode_enabled):
 		update_build_preview()
+	
 		
 func _input(event):
 	if(event.is_action_pressed("ui_accept")):
 		build_if_can()
 	if(event.is_action_pressed("ui_cancel")):
 		cancel_build_mode()
+	
 	
 func setup_build_mode(tower_data):
 	if (build_mode_enabled):
@@ -53,6 +56,7 @@ func setup_build_mode(tower_data):
 	build_mode_enabled = true
 	selected_tower_scene = tower_scene
 	ui.set_tower_preview(load(tower_scene).instantiate(), get_global_mouse_position())
+
 	
 func update_build_preview():
 	var mouse_pos = grid.get_global_mouse_position()
@@ -67,8 +71,10 @@ func update_build_preview():
 	var preview_pos = shift_to_half_cell_size(get_viewport().get_mouse_position())
 	ui.update_tower_preview(preview_pos, can_build_here)
 	
+	
 func shift_to_half_cell_size(value: Vector2): 
 	return value - Vector2(GRID_CELL_SIZE / 2, GRID_CELL_SIZE / 2)
+
 
 func cancel_build_mode():
 	if (build_mode_enabled):
@@ -77,11 +83,13 @@ func cancel_build_mode():
 		can_build_here = false
 		ui.remove_preview()
 
+
 func build_if_can():
 	if (build_mode_enabled and can_build_here):
 		_place_tower(load(selected_tower_scene).instantiate())
 		emit_signal("on_tower_builder", )
 		cancel_build_mode()
+	
 		
 func _place_tower(tower: Tower):
 	var coords = shift_to_half_cell_size(build_location)
@@ -90,6 +98,7 @@ func _place_tower(tower: Tower):
 	emit_signal("on_tower_builded", tower)
 	var tile_coord = grid.local_to_map(build_location)
 	grid.set_cell(0, tile_coord, TILES_ID, ATLAS_COORDS_BLOCK)
+	
 	
 func _remove_tower(tower: Tower):
 	map.remove_tower(tower)
