@@ -127,6 +127,8 @@ Collision="*res://scenes/singletons/Collision.gd"
 Groups="*res://scenes/singletons/Groups.gd"
 Events="*res://events/Events.gd"
 Entities="*res://data/Entities.gd"
+SceneNavigator="*res://scenes/SceneNavigator.gd"
+Levels="*res://scenes/maps/levels/Levels.gd"
 
 [display]
 

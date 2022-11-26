@@ -19,9 +19,10 @@ func _ready():
 	
 	
 func _setup_map_level():
-	var map_scene = load("res://scenes/maps/levels/MapLevel1.tscn")
-	var map_instance = map_scene.instantiate()
-	map = map_instance
+	var level_type: Levels.LevelType = SceneNavigator.arguments[SceneNavigator.ARG_LEVEL_TYPE]
+	var level_scene = load(Levels.get_level_scene(level_type))
+	var level_map_instance = level_scene.instantiate()
+	map = level_map_instance
 	add_child(map)
 	
 	

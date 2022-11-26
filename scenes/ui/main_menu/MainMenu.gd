@@ -5,7 +5,7 @@ const GAME_SCENE = preload("res://scenes/MainScene.tscn")
 var alert_dialog = preload("res://scenes/ui/dialog/AlertDialog.tscn")
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/MainScene.tscn")
+	SceneNavigator.open_game_scene(Levels.LevelType.LEVEL_2)
 
 
 func _on_base_button_pressed():
