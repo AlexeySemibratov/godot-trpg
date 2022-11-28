@@ -1,17 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfpgrpf4d4cip"]
+[gd_scene load_steps=5 format=3 uid="uid://bfpgrpf4d4cip"]
 
 [ext_resource type="PackedScene" uid="uid://c4urld417iwmw" path="res://scenes/entity/enemy/base/EnemyBase.tscn" id="1_ahngq"]
+[ext_resource type="Script" path="res://scenes/entity/enemy/specials/heavy/HeavyTank.gd" id="2_kjemf"]
 [ext_resource type="PackedScene" uid="uid://by1m781jbg15l" path="res://scenes/entity/enemy/specials/heavy/HeavyTankBody.tscn" id="2_si8bx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypn2p"]
 size = Vector2(79, 67)
 
 [node name="Node2D" instance=ExtResource("1_ahngq")]
+script = ExtResource("2_kjemf")
 max_hp = 250
 speed = 45
 reward_fuel = 15
 
-[node name="HeavyTankBody" parent="BodyArea" index="0" instance=ExtResource("2_si8bx")]
+[node name="Body" parent="BodyArea" index="0" instance=ExtResource("2_si8bx")]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" parent="BodyArea" index="1"]
 position = Vector2(-3.5, -0.5)

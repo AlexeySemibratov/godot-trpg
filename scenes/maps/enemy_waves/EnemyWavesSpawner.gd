@@ -34,8 +34,6 @@ func _start_next_wave():
 		
 		var wave: EnemyWave = _waves[current_wave] 
 		var enemies_in_wave = wave.get_total_enemy_count() 
-		enemies_left += enemies_in_wave
-		_on_enemies_left_count_changed()
 		print("Spawn wave: " + str(current_wave))
 		_spawn_wave(wave)
 			
@@ -50,7 +48,7 @@ func _spawn_wave(wave: EnemyWave):
 func _spawn_enemy(enemy_id: String, times: int):
 	for i in range(times):
 		_spawn_single_enemy(enemy_id)
-		var delay = randf_range(0.75, 2.5)
+		var delay = randf_range(1.5, 2.5)
 		await get_tree().create_timer(delay).timeout	
 		
 		

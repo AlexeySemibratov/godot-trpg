@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://by1m781jbg15l"]
+[gd_scene load_steps=10 format=3 uid="uid://by1m781jbg15l"]
 
+[ext_resource type="Script" path="res://scenes/entity/enemy/specials/heavy/HeavyTankBody.gd" id="1_mkq68"]
 [ext_resource type="Texture2D" uid="uid://dcl1r1uno7tds" path="res://resources/textures/enemies/tracks_big_0.png" id="1_tfsp1"]
 [ext_resource type="Texture2D" uid="uid://dxiqglyd3a78a" path="res://resources/textures/enemies/tracks_big_1.png" id="2_4c2ev"]
 [ext_resource type="Texture2D" uid="uid://bo71xj7ts6o65" path="res://resources/textures/enemies/special_tank_1_body.png" id="2_74j0o"]
@@ -13,15 +14,137 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_0k2du"]
+resource_name = "destruction_1"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(28, -15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.436332]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tower:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.436332]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.301961, 0.231373, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0yyha"]
+resource_name = "destruction_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tower:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.0472]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tower:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, -45)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tracks:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(50, 8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tracks:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.263545]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.301961, 0.231373, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0epfl"]
+_data = {
+"destruction_1": SubResource("Animation_0k2du"),
+"destruction_2": SubResource("Animation_0yyha")
+}
+
 [node name="HeavyTankBody" type="Node2D"]
+script = ExtResource("1_mkq68")
 
 [node name="Tracks" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 frames = SubResource("SpriteFrames_bxwv3")
 playing = true
 
-[node name="Body" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+[node name="Body" type="Sprite2D" parent="Tracks"]
+scale = Vector2(1, 1)
 texture = ExtResource("2_74j0o")
 
 [node name="Tower" type="Sprite2D" parent="."]
@@ -29,3 +152,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_v5jn4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_0epfl")
+}
