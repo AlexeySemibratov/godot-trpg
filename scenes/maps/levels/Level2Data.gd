@@ -5,14 +5,14 @@ var _waves: Array[EnemyWave] = [
 		.add_enemy(Entities.enemies.HEAVY_TANK, 1)
 		.build(),
 	EnemyWave.Builder.new()
-		.add_enemy(Entities.enemies.HEAVY_TANK, 2)
+		.add_enemy(Entities.enemies.HEAVY_TANK, 3)
 		.build(),
 	EnemyWave.Builder.new()
 		.add_enemy(Entities.enemies.LIGHT_TANK, 3)
-		.add_enemy(Entities.enemies.HEAVY_TANK, 1)
+		.add_enemy(Entities.enemies.HEAVY_TANK, 5)
 		.build(),
 	EnemyWave.Builder.new()
-		.add_enemy(Entities.enemies.HEAVY_TANK, 6)
+		.add_enemy(Entities.enemies.HEAVY_TANK, 8)
 		.build(),
 ]
 

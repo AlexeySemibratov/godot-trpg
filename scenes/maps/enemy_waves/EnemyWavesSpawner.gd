@@ -49,6 +49,7 @@ func _spawn_enemy(enemy_id: String, times: int):
 	for i in range(times):
 		_spawn_single_enemy(enemy_id)
 		var delay = randf_range(1.5, 2.5)
+		print("Spawn enemy %s, and delay for %f: " % [enemy_id, delay])
 		await get_tree().create_timer(delay).timeout	
 		
 		
