@@ -41,5 +41,5 @@ func hide_dialog():
 
 
 func _on_button_pressed():
-	emit_signal("button_pressed")
+	button_pressed.emit()
 	hide_dialog()

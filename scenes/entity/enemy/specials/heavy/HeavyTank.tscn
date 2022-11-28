@@ -7,8 +7,9 @@
 size = Vector2(79, 67)
 
 [node name="Node2D" instance=ExtResource("1_ahngq")]
-max_hp = 220
-speed = 55
+max_hp = 250
+speed = 45
+reward_fuel = 15
 
 [node name="HeavyTankBody" parent="BodyArea" index="0" instance=ExtResource("2_si8bx")]
 

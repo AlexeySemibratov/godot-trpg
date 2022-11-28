@@ -5,7 +5,7 @@ signal on_button_clicked(tower_scene)
 
 var button_scene = load("res://scenes/ui/shop/ShopButton.tscn")
 
-var current_fuel: int = 100		
+var current_fuel: int = 30		
 
 const FUEL_TEXT = "Fuel: %d"
 
@@ -52,6 +52,8 @@ func add_towers(towers: Dictionary):
 		button.connect("on_card_pressed",Callable(self,"_on_button_clicked").bind(tower_scene))
 		_set_tower_texture(button.tower_texture_button, tower_obj.icon_image_path)
 		tower_obj.queue_free()
+	
+	_update_buttons()
 
 		
 func _set_tower_texture(button: TextureButton, image_path):

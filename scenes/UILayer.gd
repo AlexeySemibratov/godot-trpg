@@ -18,12 +18,14 @@ func set_tower_preview(tower, position):
 	
 	preview_control = control
 	
+	
 func update_tower_preview(position, can_build):
 	var modualte_color = Valid_Build_Color if (can_build) else Invalid_Build_Color
 	var tower_prev = preview_control.get_node("TowerPreview")
 	if not (tower_prev.modulate == modualte_color):
 		tower_prev.modulate = modualte_color
 	preview_control.position = position
+	
 	
 func remove_preview():
 	preview_control.queue_free()

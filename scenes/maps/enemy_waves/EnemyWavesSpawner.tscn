@@ -7,7 +7,7 @@ script = ExtResource("1_cujlj")
 
 [node name="WavesDelayTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 10.0
+wait_time = 15.0
 one_shot = true
 
 [connection signal="timeout" from="WavesDelayTimer" to="." method="_on_waves_delay_timer_timeout"]

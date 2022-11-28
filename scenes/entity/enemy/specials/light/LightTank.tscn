@@ -9,8 +9,9 @@ size = Vector2(59, 47)
 
 [node name="Node2D" instance=ExtResource("2")]
 script = ExtResource("3")
-speed = 75
-reward_fuel = 5
+max_hp = 120
+speed = 70
+reward_fuel = 8
 
 [node name="Body" parent="BodyArea" index="0" instance=ExtResource("1")]
 

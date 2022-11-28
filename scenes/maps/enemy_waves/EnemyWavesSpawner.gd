@@ -2,20 +2,9 @@ class_name EnemyWaveSpawner
 extends Node2D
 
 signal on_enemy_spawned(enemy)
-signal on_enemies_left_count_changed(value)
+signal on_enemies_left_count_changed(value: int)
 
-var waves: Array[EnemyWave] = [
-	EnemyWave.Builder.new()
-		.add_enemy(Entities.enemies.LIGHT_TANK, 4)
-		.build(),
-	EnemyWave.Builder.new()
-		.add_enemy(Entities.enemies.LIGHT_TANK, 4)
-		.add_enemy(Entities.enemies.HEAVY_TANK, 2)
-		.build(),
-	EnemyWave.Builder.new()
-		.add_enemy(Entities.enemies.HEAVY_TANK, 6)
-		.build()
-]
+var _waves: Array[EnemyWave] = []
 
 var current_wave: int = -1
 var enemies_left = 0
@@ -23,18 +12,19 @@ var enemies_left = 0
 
 @onready var waves_delay_timer: Timer = %WavesDelayTimer
 
-func start():
+func start(waves: Array[EnemyWave]):
+	_waves = waves
 	_start_next_wave()
 	print("Waves count is %d " % waves.size())
 
 
 func _start_next_wave():
 	var next_wave = current_wave + 1
-	if (next_wave < waves.size()):
+	if (next_wave < _waves.size()):
 		waves_delay_timer.start()
 		current_wave = next_wave
 		
-		var wave: EnemyWave = waves[current_wave] 
+		var wave: EnemyWave = _waves[current_wave] 
 		var enemies_in_wave = wave.get_total_enemy_count() 
 		enemies_left += enemies_in_wave
 		_on_enemies_left_count_changed()
@@ -52,7 +42,7 @@ func _spawn_wave(wave: EnemyWave):
 func _spawn_enemy(enemy_id: String, times: int):
 	for i in range(times):
 		_spawn_single_enemy(enemy_id)
-		var delay = randf_range(1, 1.75)
+		var delay = randf_range(0.75, 2.5)
 		await get_tree().create_timer(delay).timeout	
 		
 		
