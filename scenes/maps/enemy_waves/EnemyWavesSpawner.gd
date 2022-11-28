@@ -4,18 +4,26 @@ extends Node2D
 signal on_enemy_spawned(enemy)
 signal on_enemies_left_count_changed(value: int)
 
-var _waves: Array[EnemyWave] = []
-
 var current_wave: int = -1
-var enemies_left = 0
+var enemies_left: int = -1
 
+var _waves: Array[EnemyWave] = []
 
 @onready var waves_delay_timer: Timer = %WavesDelayTimer
 
 func start(waves: Array[EnemyWave]):
 	_waves = waves
+	_setup_enemies_left_value()
 	_start_next_wave()
 	print("Waves count is %d " % waves.size())
+
+
+func _setup_enemies_left_value():
+	var total_enemies_count = 0
+	for wave in _waves:
+		total_enemies_count += wave.get_total_enemy_count()
+		
+	enemies_left = total_enemies_count
 
 
 func _start_next_wave():
@@ -34,9 +42,9 @@ func _start_next_wave():
 			
 func _spawn_wave(wave: EnemyWave):
 	for enemy_id in wave.entities_and_count_dict.keys():
-			var times = wave.entities_and_count_dict[enemy_id]
-			print("Spawn enemy %s, times %d: " % [enemy_id, times])
-			_spawn_enemy(enemy_id, times)
+		var times = wave.entities_and_count_dict[enemy_id]
+		print("Spawn enemy %s, times %d: " % [enemy_id, times])
+		_spawn_enemy(enemy_id, times)
 			
 	
 func _spawn_enemy(enemy_id: String, times: int):
@@ -59,8 +67,7 @@ func _on_enemy_exit_tree():
 	
 	
 func _on_enemies_left_count_changed():
-	## print("Enemies left: " + str(enemies_left))
-	emit_signal("on_enemies_left_count_changed", enemies_left)
+	on_enemies_left_count_changed.emit(enemies_left)
 
 
 func _on_waves_delay_timer_timeout():
