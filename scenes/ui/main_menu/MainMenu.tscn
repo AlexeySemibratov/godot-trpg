@@ -31,7 +31,7 @@ offset_right = 1004.0
 offset_bottom = 748.0
 
 [node name="Title" type="Label" parent="MarginContainer/MenuGroups"]
-custom_minimum_size = Vector2i(0, 200)
+custom_minimum_size = Vector2(0, 200)
 offset_right = 984.0
 offset_bottom = 200.0
 theme_override_font_sizes/font_size = 80
@@ -48,7 +48,7 @@ alignment = 1
 
 [node name="PlayButton" type="Button" parent="MarginContainer/MenuGroups/ButtonsContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2i(300, 80)
+custom_minimum_size = Vector2(300, 80)
 offset_left = 342.0
 offset_right = 642.0
 offset_bottom = 80.0
@@ -59,7 +59,7 @@ text = "Play"
 
 [node name="BaseButton" type="Button" parent="MarginContainer/MenuGroups/ButtonsContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2i(300, 60)
+custom_minimum_size = Vector2(300, 60)
 offset_left = 342.0
 offset_top = 88.0
 offset_right = 642.0
@@ -70,7 +70,7 @@ text = "Base"
 
 [node name="SettingsButton" type="Button" parent="MarginContainer/MenuGroups/ButtonsContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2i(300, 60)
+custom_minimum_size = Vector2(300, 60)
 offset_left = 342.0
 offset_top = 156.0
 offset_right = 642.0

@@ -59,7 +59,7 @@ func add_towers(towers: Dictionary):
 func _set_tower_texture(button: TextureButton, image_path):
 	var image = Image.load_from_file(image_path)
 	var texture = ImageTexture.create_from_image(image)
-	button.set_normal_texture(texture)
+	button.texture_normal = texture
 	
 	
 func _on_button_clicked(tower_data):

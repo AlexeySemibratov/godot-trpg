@@ -144,7 +144,6 @@ frames = SubResource("SpriteFrames_bxwv3")
 playing = true
 
 [node name="Body" type="Sprite2D" parent="Tracks"]
-scale = Vector2(1, 1)
 texture = ExtResource("2_74j0o")
 
 [node name="Tower" type="Sprite2D" parent="."]

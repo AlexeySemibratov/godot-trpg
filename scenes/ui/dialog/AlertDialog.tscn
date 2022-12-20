@@ -27,12 +27,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="PanelContainer"]
-custom_minimum_size = Vector2i(320, 120)
+custom_minimum_size = Vector2(320, 120)
 offset_right = 320.0
 offset_bottom = 166.0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-custom_minimum_size = Vector2i(320, 0)
+custom_minimum_size = Vector2(320, 0)
 offset_right = 320.0
 offset_bottom = 166.0
 grow_horizontal = 2
