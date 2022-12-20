@@ -79,7 +79,7 @@ func _setup_shop():
 	
 	
 func _on_tower_builded(tower: Tower):
-	shop.decrease_fuel(tower.build_cost)
+	shop.decrease_fuel(tower.tower_data.sold_cost)
 	
 	
 func _on_tower_sold(tower: Tower):

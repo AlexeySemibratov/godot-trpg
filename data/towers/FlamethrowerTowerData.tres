@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cqa2vfdiuavy3"]
+
+[ext_resource type="Script" path="res://data/TowerData.gd" id="1_hjbbq"]
+[ext_resource type="Texture2D" uid="uid://cvimygh8kul8b" path="res://resources/textures/towers/flamethrower_turret.png" id="1_kecgl"]
+
+[resource]
+script = ExtResource("1_hjbbq")
+icon_image_path = "res://resources/textures/towers/towerDefense_tile249.png"
+icon_image = ExtResource("1_kecgl")
+build_cost = 25
+sold_cost = null

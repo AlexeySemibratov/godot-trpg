@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dleidoddlsrv"]
+[gd_scene load_steps=7 format=3 uid="uid://dleidoddlsrv"]
 
 [ext_resource type="Script" path="res://scenes/entity/tower/rocket_tower/TowerRocketCommon.gd" id="1_vx5yc"]
+[ext_resource type="Resource" uid="uid://cq6tgep4hkea1" path="res://data/towers/RocketTowerData.tres" id="2_8fhxg"]
 [ext_resource type="Texture2D" uid="uid://dtk17e4dt06rf" path="res://resources/textures/towers/towerDefense_tile180.png" id="2_fqreq"]
 [ext_resource type="Texture2D" uid="uid://c3d280u4ktmse" path="res://resources/textures/towers/towerDefense_tile206.png" id="3_lq1it"]
 [ext_resource type="PackedScene" path="res://scenes/entity/tower/shooting/SingleBulletComponent.tscn" id="4_feoor"]
@@ -14,8 +15,7 @@ active_range = 550
 range_area_node = NodePath("Area2D")
 turret_node = NodePath("TowerGun")
 selection_renderer_node = NodePath("SelectionRenderer")
-icon_image_path = "res://resources/textures/towers/towerDefense_tile206.png"
-build_cost = 20
+tower_data = ExtResource("2_8fhxg")
 
 [node name="TowerBase" type="Sprite2D" parent="."]
 position = Vector2(32, 32)

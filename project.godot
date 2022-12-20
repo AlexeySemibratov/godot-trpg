@@ -104,6 +104,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://systems/TowerBuilder.gd"
 }, {
+"base": "Resource",
+"class": &"TowerData",
+"language": &"GDScript",
+"path": "res://data/TowerData.gd"
+}, {
 "base": "PanelContainer",
 "class": &"TowersShop",
 "language": &"GDScript",
@@ -129,6 +134,7 @@ _global_script_class_icons={
 "SingleBulletComponent": "",
 "Tower": "",
 "TowerBuilder": "",
+"TowerData": "",
 "TowersShop": ""
 }
 

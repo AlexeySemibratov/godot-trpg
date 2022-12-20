@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://baqqko63liodh"]
+[gd_scene load_steps=8 format=3 uid="uid://baqqko63liodh"]
 
 [ext_resource type="Script" path="res://scenes/entity/tower/common_tower/TowerGunCommon.gd" id="1_rh1x3"]
 [ext_resource type="Texture2D" uid="uid://dtk17e4dt06rf" path="res://resources/textures/towers/towerDefense_tile180.png" id="2_6nmyq"]
+[ext_resource type="Resource" uid="uid://dswflavrguwnh" path="res://data/towers/CommonTowerData.tres" id="2_epwhx"]
 [ext_resource type="Texture2D" uid="uid://d4dhw074l0hty" path="res://resources/textures/towers/towerDefense_tile249.png" id="3_djcew"]
 [ext_resource type="PackedScene" path="res://scenes/entity/tower/shooting/SingleBulletComponent.tscn" id="4_k6yll"]
 [ext_resource type="PackedScene" uid="uid://dib2vexou0mhx" path="res://scenes/entity/tower/shooting/AutoloaderBulletComponent.tscn" id="5_2njxk"]
@@ -15,8 +16,7 @@ active_range = 200
 range_area_node = NodePath("Area2D")
 turret_node = NodePath("TowerGun")
 selection_renderer_node = NodePath("SelectionRenderer")
-icon_image_path = "res://resources/textures/towers/towerDefense_tile249.png"
-build_cost = 10
+tower_data = ExtResource("2_epwhx")
 
 [node name="TowerBase" type="Sprite2D" parent="."]
 position = Vector2(32, 32)
@@ -43,12 +43,14 @@ offset_bottom = 62.0
 mouse_filter = 1
 
 [node name="SingleBulletComponent" parent="TowerGUI" instance=ExtResource("4_k6yll")]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 
 [node name="AutloaderBulletComponent" parent="TowerGUI" instance=ExtResource("5_2njxk")]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

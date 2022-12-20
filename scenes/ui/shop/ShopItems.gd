@@ -30,6 +30,23 @@ func decrease_fuel(value):
 	current_fuel -= value
 	_update_fuel_text()
 	_update_buttons()
+	
+	
+func add_towers(towers: Dictionary):
+	for tower in towers.values():
+		var tower_scene = tower[Entities.towers.KEY_SCENE]
+		var tower_data = load(tower[Entities.towers.KEY_TOWER_DATA])
+		_add_tower_button(tower_scene, tower_data)
+	
+	_update_buttons()
+	
+func _add_tower_button(tower_scene: String, tower_data: TowerData):
+	var button: ShopButton = button_scene.instantiate()
+	towers_container.add_child(button)
+		
+	button.cost = tower_data.build_cost
+	button.tower_texture_button.texture_normal = tower_data.icon_image
+	button.on_card_pressed.connect(self._on_button_clicked.bind(tower_scene))
 
 
 func _update_fuel_text():
@@ -41,25 +58,6 @@ func _update_buttons():
 		var button = child as ShopButton 
 		if (button):
 			button.enabled = button.cost <= current_fuel
-
-
-func add_towers(towers: Dictionary):
-	for tower_scene in towers.values():
-		var button: ShopButton = button_scene.instantiate()
-		var tower_obj = load(tower_scene).instantiate()
-		towers_container.add_child(button)
-		button.cost = tower_obj.build_cost
-		button.connect("on_card_pressed",Callable(self,"_on_button_clicked").bind(tower_scene))
-		_set_tower_texture(button.tower_texture_button, tower_obj.icon_image_path)
-		tower_obj.queue_free()
-	
-	_update_buttons()
-
-		
-func _set_tower_texture(button: TextureButton, image_path):
-	var image = Image.load_from_file(image_path)
-	var texture = ImageTexture.create_from_image(image)
-	button.texture_normal = texture
 	
 	
 func _on_button_clicked(tower_data):
