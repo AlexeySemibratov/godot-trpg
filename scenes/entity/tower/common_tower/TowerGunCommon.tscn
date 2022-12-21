@@ -43,14 +43,12 @@ offset_bottom = 62.0
 mouse_filter = 1
 
 [node name="SingleBulletComponent" parent="TowerGUI" instance=ExtResource("4_k6yll")]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 
 [node name="AutloaderBulletComponent" parent="TowerGUI" instance=ExtResource("5_2njxk")]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

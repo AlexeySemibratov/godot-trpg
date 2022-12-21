@@ -7,4 +7,4 @@
 script = ExtResource("1_np0vp")
 icon_image = ExtResource("1_htko3")
 build_cost = 10
-sold_cost = null
+sold_cost = 0

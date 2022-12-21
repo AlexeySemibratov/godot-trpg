@@ -99,6 +99,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/entity/tower/base/Tower.gd"
 }, {
+"base": "Control",
+"class": &"TowerBuildPreview",
+"language": &"GDScript",
+"path": "res://scenes/ui/build/TowerBuildPreview.gd"
+}, {
 "base": "Node2D",
 "class": &"TowerBuilder",
 "language": &"GDScript",
@@ -133,6 +138,7 @@ _global_script_class_icons={
 "ShopButton": "",
 "SingleBulletComponent": "",
 "Tower": "",
+"TowerBuildPreview": "",
 "TowerBuilder": "",
 "TowerData": "",
 "TowersShop": ""

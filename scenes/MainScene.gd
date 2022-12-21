@@ -8,7 +8,7 @@ var map: GameMap
 var tower_builder: TowerBuilder
 
 @onready var shop: TowersShop = $Camera2d/UILayer/IngameUi/ShopList
-@onready var ui: CanvasLayer = %UILayer
+@onready var tower_build_preview: TowerBuildPreview = %TowerBuildPreview
 @onready var main_ui: MainUI= %IngameUi
 @onready var base_ui = $Camera2d/UILayer/IngameUi/Base
 
@@ -49,9 +49,15 @@ func _level_failed(level_data: LevelData):
 	
 func _setup_tower_bulder():
 	tower_builder = TowerBuilder.new()
-	tower_builder.setup(map.constructions, map.building_grid, ui)
+	tower_builder.setup(map.constructions, map.building_grid)
+	
 	tower_builder.on_tower_builded.connect(self._on_tower_builded)
 	tower_builder.on_tower_sold.connect(self._on_tower_sold)
+	
+	tower_builder.on_build_mode_enabled.connect(tower_build_preview.set_tower_preview)
+	tower_builder.on_build_mode_disabled.connect(tower_build_preview.remove_tower_preview)
+	tower_builder.on_build_mode_active.connect(tower_build_preview.update_preview_state)
+	
 	add_child(tower_builder)
 	
 	
@@ -78,8 +84,8 @@ func _setup_shop():
 	Events.on_enemy_destroyed_by.connect(self._on_enemy_destroyed)
 	
 	
-func _on_tower_builded(tower: Tower):
-	shop.decrease_fuel(tower.tower_data.sold_cost)
+func _on_tower_builded(tower):
+	shop.decrease_fuel(tower.tower_data.build_cost)
 	
 	
 func _on_tower_sold(tower: Tower):
